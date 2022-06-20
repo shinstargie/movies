@@ -1,57 +1,68 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import StyledContainer from "./styles/StyledContainer.styled";
-import MovieContainer from "./styles/MovieContainer.styled";
-import MovieImage from "./styles/MovieImage.styled";
-import Section from "./styles/Section.styled";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Home from "./pages/Home";
 import "./App.css";
 
-const api = axios.create({
-  baseURL: "https://api.themoviedb.org/3/",
-  params: {
-    api_key: process.env.REACT_APP_API_KEY,
-  },
-});
-
-interface movieObject {
-  title: string;
-  id: number;
-  poster_path: string;
+function App() {
+  return (
+    <>
+      <Router>
+        <Route path="/" exact component={Home} />
+      </Router>
+    </>
+  );
 }
 
-function App() {
-  const [data, setData] = useState<movieObject[] | null>(null);
-  const IMAGE_PATH = "https://image.tmdb.org/t/p/w300";
-  const [sort, setSort] = useState<string>();
-  const [page, setPage] = useState<number>();
-  // const [loading, setLoading] = useState<boolean>();
+export default App;
 
-  useEffect(() => {
-    getData();
-  }, [sort, page]);
+{
+  /* <Section>
+        <StyledContainer>
+          <Modal
+            style={modalStyles}
+            isOpen={toggleModal}
+            onRequestClose={() => setToggleModal(!toggleModal)}
+          >
+            {currentMovie && (
+              <>
+                {loading && <TrailerLoading />}
 
-  async function getData() {
-    const { data } = await api.get("discover/movie", {
-      params: {
-        language: "en-US",
-        sort_by: sort,
-        include_adult: false,
-        page,
-      },
-    });
+                <h1>{currentMovie.title}</h1>
+                <Trailer movie={currentMovie} />
+                <p>{currentMovie.overview}</p>
+              </>
+            )}
+          </Modal>
 
-    setData(data.results);
-  }
+          <MovieContainer>
+            {data?.map((movie) => (
+              <MovieImage
+                key={movie.id}
+                src={IMAGE_PATH + `${movie.poster_path}`}
+                alt={movie.title}
+                onClick={() => openModal(movie)}
+              />
+            ))}
+          </MovieContainer>
+        </StyledContainer>
+      </Section> */
+}
 
-  function setSortyBy(val: any): void {
+{
+  /* 
+
+   function setSortyBy(val: any): void {
     setSort(val.value);
   }
+  
+  <img
+                  className="movie-image"
+                  src={IMAGE_PATH + `${movie.poster_path}`}
+                  src={BACKDROP_PATH + `${movie.backdrop_path}`}
+                  alt={movie.title}
+                /> */
+}
 
-  return (
-    <div className="App">
-      <Section>
-        <StyledContainer>
-          <div className="controls">
+/* <div className="controls">
             <select
               onChange={(event: React.ChangeEvent<Element>) =>
                 setSortyBy(event.target)
@@ -75,30 +86,4 @@ function App() {
               <option value="6">6</option>
               <option value="7">7</option>
             </select>
-          </div>
-
-          <MovieContainer>
-            {data?.map((movie) => (
-              <MovieImage
-                key={movie.id}
-                src={IMAGE_PATH + `${movie.poster_path}`}
-                alt={movie.title}
-              />
-            ))}
-          </MovieContainer>
-        </StyledContainer>
-      </Section>
-    </div>
-  );
-}
-
-export default App;
-
-{
-  /* <img
-                  className="movie-image"
-                  src={IMAGE_PATH + `${movie.poster_path}`}
-                  src={BACKDROP_PATH + `${movie.backdrop_path}`}
-                  alt={movie.title}
-                /> */
-}
+          </div> */

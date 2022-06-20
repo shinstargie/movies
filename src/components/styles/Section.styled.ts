@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import device from "./_breakpoints";
 
-const Section = styled.div`
+const StyledSection = styled.div`
   padding: 75px;
 
   @media ${device.laptop} {
-    padding: 50px;
+    padding: 25px;
   }
 `;
 
-export default Section;
+export default StyledSection;

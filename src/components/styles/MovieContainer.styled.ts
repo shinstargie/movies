@@ -17,6 +17,7 @@ const MovieContainer = styled.div`
 
   @media ${device.tablet} {
     grid-template-columns: repeat(2, auto);
+    grid-gap: 30px;
   }
 
   @media ${device.mobileL} {
