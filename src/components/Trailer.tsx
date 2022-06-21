@@ -1,6 +1,6 @@
 import React from "react";
 import Youtube from "react-youtube";
-import { Movie } from "./../pages/Home";
+import { Movie } from "./_types";
 
 interface Props {
   trailer: Movie;
