@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledTrailerTitle = styled.h1`
-  font-size: 70px;
+  font-size: 60px;
   max-width: 85%;
   font-weight: 900;
   margin: 0;

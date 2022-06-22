@@ -2,12 +2,12 @@ import React, { useState, useEffect, useContext } from "react";
 import Modal from "react-modal";
 import { modalStyles } from "../components/styles/customStyles";
 import Section from "../components/Section";
-import StyledContainer from "../components/styles/StyledContainer.styled";
 import MovieContainer from "../components/styles/MovieContainer.styled";
 import MovieImage from "../components/MovieImage";
 import TrailerModal from "../components/TrailerModal";
-import api from "../api";
 import { Genre, Movie } from "../components/_types";
+import Container from "../components/Container";
+import api from "../api";
 
 Modal.setAppElement("#root");
 
@@ -88,10 +88,9 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <h1>Popular</h1>
-
       <Section>
-        <StyledContainer>
+        <Container>
+          <h1>Popular</h1>
           <Modal
             style={modalStyles}
             isOpen={toggleModal}
@@ -116,7 +115,7 @@ const Home: React.FC = () => {
               />
             ))}
           </MovieContainer>
-        </StyledContainer>
+        </Container>
       </Section>
     </>
   );

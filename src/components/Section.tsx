@@ -1,5 +1,5 @@
 import React from "react";
-import StyledSection from "./styles/Section.styled";
+import StyledSection from "./styles/StyledSection.styled";
 
 interface SectionProps {
   children: JSX.Element[] | JSX.Element;

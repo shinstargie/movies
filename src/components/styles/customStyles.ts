@@ -1,6 +1,7 @@
 export const modalStyles = {
   content: {
     overflow: "hidden",
+    padding: "0px",
     top: "50%",
     left: "50%",
     right: "auto",
