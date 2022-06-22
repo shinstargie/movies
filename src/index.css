@@ -58,3 +58,43 @@
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.85);
 }
+
+/* react pagination styles */
+
+.pagination {
+  margin-top: 25px;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  cursor: pointer;
+}
+
+.pagination > li {
+  padding: 10px;
+  border: 1px solid white;
+}
+
+.pagination > li:hover {
+  background-color: red;
+}
+
+.selected {
+  background-color: red;
+}
+
+/* .page-num {
+  padding: 10px;
+  border: 1px solid white;
+}
+
+.selected {
+  background-color: red;
+  padding: 10px;
+  border: 1px solid white;
+}
+
+.break {
+  padding: 10px;
+  border: 1px solid white;
+} */

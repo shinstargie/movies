@@ -50,7 +50,7 @@ const SwipeSlider: React.FC<Props> = ({}) => {
       params: {
         language: "en-US",
         include_adult: false,
-        with_genres: 28,
+        with_genres: 10752,
         page: 1,
       },
     });
