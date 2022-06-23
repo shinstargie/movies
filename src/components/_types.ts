@@ -12,7 +12,17 @@ export interface Movie {
   genre_ids: number[];
 }
 
+export interface Movies {
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
+}
+
 export interface Genre {
   id: number;
   name: string;
+}
+export interface Genres {
+  genres: Genre[];
 }

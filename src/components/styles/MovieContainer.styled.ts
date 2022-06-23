@@ -3,10 +3,10 @@ import device from "./_breakpoints";
 
 const MovieContainer = styled.div`
   display: grid;
-  justify-content: end;
-  width: 100%;
+  min-height: 100vh;
   grid-template-columns: repeat(5, auto);
   grid-gap: 20px;
+  margin-bottom: 40px;
 
   @media ${device.laptopL} {
     grid-template-columns: repeat(4, auto);

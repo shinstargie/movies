@@ -7,12 +7,11 @@ import MovieImage from "../components/MovieImage";
 import TrailerModal from "../components/TrailerModal";
 import { Genre, Movie } from "../components/_types";
 import Container from "../components/Container";
-import api from "../api";
+import { api, fetchMovies, IMAGE_PATH } from "../api";
 
 Modal.setAppElement("#root");
 
 const Home: React.FC = () => {
-  const IMAGE_PATH = "https://image.tmdb.org/t/p/w300";
   const [toggleModal, setToggleModal] = useState<boolean>(false);
   const [movies, setMovies] = useState<Movie[] | null>(null);
   const [genres, setGenres] = useState<Genre[] | null>(null);
@@ -27,15 +26,21 @@ const Home: React.FC = () => {
     setLoading(false);
   }, []);
 
+  /* useEffect(() => {
+    const data = fetchMovies("discover/movie", settings);
+    console.log(data);
+  }, []); */
+
   async function getMovies() {
-    const { data } = await api.get("discover/movie", {
+    const options = {
       params: {
         language: "en-US",
         include_adult: false,
         page: 1,
       },
-    });
+    };
 
+    const data = await fetchMovies("discover/movie", options);
     setMovies(data.results);
   }
 
@@ -131,3 +136,11 @@ export default Home;
                 <Trailer movie={currentMovie} />
                 <TrailerDescription text={currentMovie.overview} /> */
 }
+
+/* const { data } = await api.get("discover/movie", {
+      params: {
+        language: "en-US",
+        include_adult: false,
+        page: 1,
+      },
+    }); */

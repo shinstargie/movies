@@ -56,45 +56,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 /* react pagination styles */
 
 .pagination {
-  margin-top: 25px;
-  list-style-type: none;
   display: flex;
   align-items: center;
   justify-content: end;
+  list-style-type: none;
   cursor: pointer;
 }
 
-.pagination > li {
+.pagination > li > a {
   padding: 10px;
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-.pagination > li:hover {
-  background-color: red;
+.pagination > li > a:hover {
+  background-color: #b20600;
 }
 
-.selected {
-  background-color: red;
+.selected > a {
+  background-color: #b20600;
 }
-
-/* .page-num {
-  padding: 10px;
-  border: 1px solid white;
-}
-
-.selected {
-  background-color: red;
-  padding: 10px;
-  border: 1px solid white;
-}
-
-.break {
-  padding: 10px;
-  border: 1px solid white;
-} */

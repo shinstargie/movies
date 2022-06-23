@@ -6,12 +6,11 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Container from "./Container";
 import { Movie, Genre } from "./_types";
-import api from "./../api";
+import { api, IMAGE_PATH } from "./../api";
 import MovieImage from "./MovieImage";
+import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 
-interface Props {}
-
-const SwiperButtonPrevious: React.FC<Props> = ({ children }: any) => {
+const SwiperButtonPrevious = ({ children }: any) => {
   const swiper = useSwiper();
   return (
     <button
@@ -35,12 +34,15 @@ const SwiperButtonNext = ({ children }: any) => {
   );
 };
 
-const SwipeSlider: React.FC<Props> = ({}) => {
-  const IMAGE_PATH = "https://image.tmdb.org/t/p/w300";
-  const [loading, setLoading] = useState<boolean>(true);
-  const [data, setData] = useState<Movie[] | null>(null);
+interface Props {
+  data: Movie[] | null;
+}
 
-  useEffect(() => {
+const SwipeSlider: React.FC<Props> = ({ data }) => {
+  const [loading, setLoading] = useState<boolean>(true);
+  // const [data, setData] = useState<Movie[] | null>(null);
+
+  /*  useEffect(() => {
     getMovies();
     setLoading(false);
   }, []);
@@ -56,7 +58,7 @@ const SwipeSlider: React.FC<Props> = ({}) => {
     });
 
     setData(data.results);
-  }
+  } */
 
   async function openModal(movie: Movie) {}
 
@@ -65,15 +67,18 @@ const SwipeSlider: React.FC<Props> = ({}) => {
       <Container>
         <Swiper
           modules={[Pagination, Navigation, A11y]}
-          slidesPerView={5}
-          spaceBetween={25}
+          slidesPerView={7}
+          spaceBetween={20}
           navigation
           pagination={{ clickable: true }}
         >
-          <SwiperButtonPrevious>{"<"}</SwiperButtonPrevious>
-          <SwiperButtonNext>{">"}</SwiperButtonNext>
-          {!loading &&
-            data &&
+          <SwiperButtonPrevious>
+            <AiOutlineLeft size={20} />
+          </SwiperButtonPrevious>
+          <SwiperButtonNext>
+            <AiOutlineRight size={20} />
+          </SwiperButtonNext>
+          {data &&
             data.map((movie: Movie) => (
               <SwiperSlide key={movie.id}>
                 <MovieImage
