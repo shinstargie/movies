@@ -6,9 +6,13 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Container from "./Container";
 import { Movie, Genre } from "./_types";
-import { api, IMAGE_PATH } from "./../api";
+import { fetchTrailer, fetchGenres, IMAGE_PATH } from "./../api";
 import MovieImage from "./MovieImage";
 import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
+import toast from "react-hot-toast";
+import { modalStyles } from "./styles/customStyles";
+import TrailerModal from "./TrailerModal";
+import Modal from "react-modal";
 
 const SwiperButtonPrevious = ({ children }: any) => {
   const swiper = useSwiper();
@@ -40,34 +44,65 @@ interface Props {
 
 const SwipeSlider: React.FC<Props> = ({ data }) => {
   const [loading, setLoading] = useState<boolean>(true);
-  // const [data, setData] = useState<Movie[] | null>(null);
+  const [toggleModal, setToggleModal] = useState<boolean>(false);
 
-  /*  useEffect(() => {
-    getMovies();
-    setLoading(false);
+  const [genres, setGenres] = useState<Genre[] | null>(null);
+  const [currentMovie, setCurrentMovie] = useState<Movie | null>(null);
+  const [currentGenres, setCurrentGenres] = useState<Genre[] | null>(null);
+
+  useEffect(() => {
+    getGenres();
   }, []);
 
-  async function getMovies() {
-    const { data } = await api.get("discover/movie", {
-      params: {
-        language: "en-US",
-        include_adult: false,
-        with_genres: 10752,
-        page: 1,
-      },
-    });
+  async function getGenres() {
+    const data = await fetchGenres("genre/movie/list");
+    setGenres(data.genres);
+  }
 
-    setData(data.results);
-  } */
+  function matchGenres(movie: Movie) {
+    if (genres) {
+      const matchedGenres = genres.filter(
+        (obj) => movie.genre_ids.indexOf(obj.id) !== -1
+      );
+      setCurrentGenres(matchedGenres);
+    }
+  }
 
-  async function openModal(movie: Movie) {}
+  async function openModal(movie: Movie) {
+    setLoading(true);
+    const trailer = await fetchTrailer(movie.id);
+    if (!trailer) return toast.error("Trailer unavailable");
+
+    movie.trailerKey = trailer.key;
+    matchGenres(movie);
+    setCurrentMovie(movie);
+    setToggleModal(!toggleModal);
+
+    const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
+      setLoading(false);
+    }, 1200);
+  }
 
   return (
     <>
       <Container>
+        <Modal
+          style={modalStyles}
+          isOpen={toggleModal}
+          onRequestClose={() => setToggleModal(!toggleModal)}
+        >
+          {currentMovie && (
+            <TrailerModal
+              movie={currentMovie}
+              loading={loading}
+              trailerGenres={currentGenres}
+            />
+          )}
+        </Modal>
+
         <Swiper
           modules={[Pagination, Navigation, A11y]}
-          slidesPerView={7}
+          slidesPerView={6}
           spaceBetween={20}
           navigation
           pagination={{ clickable: true }}
@@ -95,3 +130,25 @@ const SwipeSlider: React.FC<Props> = ({ data }) => {
 };
 
 export default SwipeSlider;
+
+/*
+const [pageLoading, setPageLoading] = useState<boolean>(true);
+   const [data, setData] = useState<Movie[] | null>(null);
+
+    useEffect(() => {
+    getMovies();
+    setLoading(false);
+  }, []);
+
+  async function getMovies() {
+    const { data } = await api.get("discover/movie", {
+      params: {
+        language: "en-US",
+        include_adult: false,
+        with_genres: 10752,
+        page: 1,
+      },
+    });
+
+    setData(data.results);
+  } */

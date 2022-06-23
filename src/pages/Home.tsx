@@ -13,6 +13,12 @@ const Home: React.FC<Props> = ({}) => {
   const [animationMovies, setAnimationMovies] = useState<Movie[] | null>(null);
   const [comedyMovies, setComedyMovies] = useState<Movie[] | null>(null);
   const [crimeMovies, setCrimeMovies] = useState<Movie[] | null>(null);
+  const [documentaryMovies, setDocumentaryMovies] = useState<Movie[] | null>(
+    null
+  );
+  const [dramaMovies, setDramaMovies] = useState<Movie[] | null>(null);
+  const [familyMovies, setFamilyMovies] = useState<Movie[] | null>(null);
+  const [fantasyMovies, setFantasyMovies] = useState<Movie[] | null>(null);
 
   useEffect(() => {
     getActionMovies();
@@ -20,6 +26,10 @@ const Home: React.FC<Props> = ({}) => {
     getAnimationMovies();
     getComedyMovies();
     getCrimeMovies();
+    getDocumentaryMovies();
+    getDramaMovies();
+    getFamilyMovies();
+    getFantasyMovies();
   }, []);
 
   async function getActionMovies() {
@@ -47,6 +57,27 @@ const Home: React.FC<Props> = ({}) => {
     setCrimeMovies(data.results);
   }
 
+  async function getDocumentaryMovies() {
+    const data = await fetchMoviesWithGenre(99, "12,28,16,35,80");
+    setDocumentaryMovies(data.results);
+  }
+
+  async function getDramaMovies() {
+    const data = await fetchMoviesWithGenre(18, "12,28,16,35,80,99");
+    setDramaMovies(data.results);
+  }
+
+  async function getFamilyMovies() {
+    const data = await fetchMoviesWithGenre(10751, "12,28,16,35,80,99,18");
+    setFamilyMovies(data.results);
+  }
+
+  async function getFantasyMovies() {
+    const data = await fetchMoviesWithGenre(14, "12,28,16,35,80,99,18,10751");
+    console.table(data.results);
+    setFantasyMovies(data.results);
+  }
+
   return (
     <>
       <Section>
@@ -69,6 +100,22 @@ const Home: React.FC<Props> = ({}) => {
         <Container>
           <h2>Crime</h2>
           <SwipeSlider data={crimeMovies} />
+        </Container>
+        <Container>
+          <h2>Documentaries</h2>
+          <SwipeSlider data={documentaryMovies} />
+        </Container>
+        <Container>
+          <h2>Dramas</h2>
+          <SwipeSlider data={dramaMovies} />
+        </Container>
+        <Container>
+          <h2>Family</h2>
+          <SwipeSlider data={familyMovies} />
+        </Container>
+        <Container>
+          <h2>Fantasy</h2>
+          <SwipeSlider data={fantasyMovies} />
         </Container>
       </Section>
     </>

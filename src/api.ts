@@ -50,6 +50,16 @@ const trailerOptions = {
   },
 };
 
+function cleanResults(data: Movies) {
+  return data.results.filter(
+    (movie: any) =>
+      !movie.title.toLocaleLowerCase().includes("porn") &&
+      !movie.title.toLocaleLowerCase().includes("female") &&
+      !movie.title.toLocaleLowerCase().includes("semen") &&
+      !movie.title.toLocaleLowerCase().includes("sex")
+  );
+}
+
 let fetchMovies: (path: string, params: { params: object }) => Promise<Movies>;
 let fetchMoviesWithGenre: (
   id: number,
@@ -60,6 +70,7 @@ let fetchTrailer: (id: number) => Promise<{ key: string }> | undefined;
 
 fetchMovies = async (path, params) => {
   const { data } = await api.get(path, params);
+  data.results = cleanResults(data);
   return data;
 };
 
@@ -67,6 +78,7 @@ fetchMoviesWithGenre = async (id, notId) => {
   movieWithGenreOptions.params.with_genres = id;
   movieWithGenreOptions.params.without_genres = notId;
   const { data } = await api.get("discover/movie", movieWithGenreOptions);
+  data.results = cleanResults(data);
   return data;
 };
 
