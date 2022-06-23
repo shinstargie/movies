@@ -96,6 +96,7 @@ fetchTrailer = async (id) => {
 };
 
 export {
+  cleanResults,
   fetchMovies,
   fetchMoviesWithGenre,
   fetchGenres,
