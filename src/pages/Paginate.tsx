@@ -33,12 +33,9 @@ const Paginate: React.FC<Props> = ({}) => {
   const [currentMovie, setCurrentMovie] = useState<Movie | null>(null);
   const [currentGenres, setCurrentGenres] = useState<Genre[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const [pageLoading, setPageLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setPageLoading(true);
     getMovies();
-    setPageLoading(false);
   }, [currentPage]);
 
   useEffect(() => {
@@ -46,10 +43,6 @@ const Paginate: React.FC<Props> = ({}) => {
   }, []);
 
   async function getMovies() {
-    /* const timeout: ReturnType<typeof setTimeout> = setTimeout(async () => {
-      
-    }, 500); */
-
     movieOptions.params.page = currentPage;
     const data = await fetchMovies("discover/movie", movieOptions);
     setCurrentMovies(data.results);
@@ -144,6 +137,10 @@ const Paginate: React.FC<Props> = ({}) => {
 };
 
 export default Paginate;
+
+/* const timeout: ReturnType<typeof setTimeout> = setTimeout(async () => {
+      
+    }, 500); */
 
 /*
 

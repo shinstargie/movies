@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Container from "../components/Container";
 import Section from "./../components/Section";
-import SwipeSlider from "./../components/SwipeSlider";
 import { fetchMoviesWithGenre } from "../api";
 import { Movie } from "../components/_types";
 import GenrePreviewContainer from "./../components/GenrePreviewContainer";
@@ -104,7 +102,12 @@ const Home: React.FC<Props> = ({}) => {
 
       {!loading && (
         <Section>
-          <GenrePreviewContainer data={actionMovies} title="Action" id={28} />
+          <GenrePreviewContainer
+            data={actionMovies}
+            title="Action"
+            id={28}
+            autoplay={true}
+          />
           <GenrePreviewContainer
             data={adventureMovies}
             title="Adventure"

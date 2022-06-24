@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { Pagination, Navigation, A11y } from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+import { Pagination, Navigation, A11y, Autoplay } from "swiper";
 import Container from "./Container";
 import { Movie, Genre } from "./_types";
 import { fetchTrailer, fetchGenres, IMAGE_PATH } from "./../api";
@@ -13,6 +10,10 @@ import toast from "react-hot-toast";
 import { modalStyles } from "./styles/customStyles";
 import TrailerModal from "./TrailerModal";
 import Modal from "react-modal";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 const SwiperButtonPrevious = ({ children }: any) => {
   const swiper = useSwiper();
@@ -40,9 +41,10 @@ const SwiperButtonNext = ({ children }: any) => {
 
 interface Props {
   data: Movie[] | null;
+  autoplay?: boolean;
 }
 
-const SwipeSlider: React.FC<Props> = ({ data }) => {
+const SwipeSlider: React.FC<Props> = ({ data, autoplay }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [toggleModal, setToggleModal] = useState<boolean>(false);
 
@@ -101,17 +103,18 @@ const SwipeSlider: React.FC<Props> = ({ data }) => {
         </Modal>
 
         <Swiper
-          modules={[Pagination, Navigation, A11y]}
+          modules={[Pagination, Navigation, Autoplay, A11y]}
           slidesPerView={6}
-          spaceBetween={20}
+          spaceBetween={25}
           navigation
           pagination={{ clickable: true }}
+          autoplay={autoplay}
         >
           <SwiperButtonPrevious>
-            <AiOutlineLeft size={20} />
+            <AiOutlineLeft size={30} />
           </SwiperButtonPrevious>
           <SwiperButtonNext>
-            <AiOutlineRight size={20} />
+            <AiOutlineRight size={30} />
           </SwiperButtonNext>
           {data &&
             data.map((movie: Movie) => (

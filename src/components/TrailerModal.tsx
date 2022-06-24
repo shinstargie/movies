@@ -22,7 +22,7 @@ const TrailerModal: React.FC<Props> = ({ movie, loading, trailerGenres }) => {
         <div style={{ position: "relative" }}>
           {loading && (
             <TrailerLoading>
-              <img style={{ width: "150px" }} src={"ytb-loading-state.gif"} />
+              <img style={{ width: "150px" }} src={"/ytb-loading-state.gif"} />
             </TrailerLoading>
           )}
 

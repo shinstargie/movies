@@ -15,6 +15,7 @@ const Navigation: React.FC<Props> = ({}) => {
             <NavigationLink to="/" text="Home" />
             <NavigationLink to="/popular" text="Popular" />
             <NavigationLink to="/paginate" text="Paginate" />
+            {/* <NavigationLink to="/genre/:id" text="By Genre" /> */}
           </StyledNavigation>
         </Container>
       </Section>

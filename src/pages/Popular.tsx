@@ -1,50 +1,54 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
-import { modalStyles } from "../components/styles/customStyles";
 import Section from "../components/Section";
-import MovieContainer from "../components/styles/MovieContainer.styled";
-import MovieImage from "../components/MovieImage";
-import TrailerModal from "../components/TrailerModal";
-import { Genre, Movie } from "../components/_types";
 import Container from "../components/Container";
-import { api, fetchMovies, IMAGE_PATH } from "../api";
+import { Movie } from "../components/_types";
+import { fetchMovies, movieOptions } from "../api";
+import PaginatedMovies from "../components/PaginatedMovies";
 
 Modal.setAppElement("#root");
 
-const Home: React.FC = () => {
-  const [toggleModal, setToggleModal] = useState<boolean>(false);
+const Popular: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentMovies, setCurrentMovies] = useState<Movie[] | null>(null);
+
+  useEffect(() => {
+    getMovies();
+  }, [currentPage]);
+
+  async function getMovies() {
+    movieOptions.params.page = currentPage;
+    const data = await fetchMovies("discover/movie", movieOptions);
+    setCurrentMovies(data.results);
+  }
+
+  function onPageChange(event: { selected: number }) {
+    setCurrentMovies(null);
+    setCurrentPage(event.selected + 1);
+  }
+
+  return (
+    <>
+      <Section>
+        <Container>
+          <h1>Popular Movies</h1>
+          <PaginatedMovies data={currentMovies} onPageChange={onPageChange} />
+        </Container>
+      </Section>
+    </>
+  );
+};
+
+export default Popular;
+
+/* const [toggleModal, setToggleModal] = useState<boolean>(false);
   const [movies, setMovies] = useState<Movie[] | null>(null);
   const [genres, setGenres] = useState<Genre[] | null>(null);
   const [currentMovie, setCurrentMovie] = useState<Movie | null>(null);
   const [currentGenres, setCurrentGenres] = useState<Genre[] | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(true); */
 
-  useEffect(() => {
-    setLoading(true);
-    getMovies();
-    getGenres();
-    setLoading(false);
-  }, []);
-
-  /* useEffect(() => {
-    const data = fetchMovies("discover/movie", settings);
-    console.log(data);
-  }, []); */
-
-  async function getMovies() {
-    const options = {
-      params: {
-        language: "en-US",
-        include_adult: false,
-        page: 1,
-      },
-    };
-
-    const data = await fetchMovies("discover/movie", options);
-    setMovies(data.results);
-  }
-
-  async function getTrailer(id: number) {
+/*  async function getTrailer(id: number) {
     const { data } = await api.get(`movie/${id}`, {
       params: {
         language: "en-US",
@@ -57,9 +61,80 @@ const Home: React.FC = () => {
     );
 
     return trailer;
-  }
+  } */
 
-  async function getGenres() {
+/* useEffect(() => {
+    const data = fetchMovies("discover/movie", settings);
+    console.log(data);
+  }, []); */
+
+// setLoading(true);
+// getGenres();
+// setLoading(false);
+
+{
+  /* <Section>
+        <Container>
+          <h1>Popular</h1>
+          <Modal
+            style={modalStyles}
+            isOpen={toggleModal}
+            onRequestClose={() => setToggleModal(!toggleModal)}
+          >
+            {currentMovie && (
+              <TrailerModal
+                movie={currentMovie}
+                loading={loading}
+                trailerGenres={currentGenres}
+              />
+            )}
+          </Modal>
+
+          <MovieContainer>
+            {movies?.map((movie) => (
+              <MovieImage
+                key={movie.id}
+                src={IMAGE_PATH + `${movie.poster_path}`}
+                alt={movie.title}
+                onClick={() => openModal(movie)}
+              />
+            ))}
+          </MovieContainer>
+        </Container>
+      </Section> */
+}
+
+/*   async function getMovies() {
+    const options = {
+      params: {
+        language: "en-US",
+        include_adult: false,
+        page: 1,
+      },
+    };
+
+    const data = await fetchMovies("discover/movie", options);
+    setMovies(data.results);
+  } */
+
+{
+  /* {loading && <TrailerLoading />} */
+}
+{
+  /* <TrailerTitle text={currentMovie.title} />
+                <Trailer movie={currentMovie} />
+                <TrailerDescription text={currentMovie.overview} /> */
+}
+
+/* const { data } = await api.get("discover/movie", {
+      params: {
+        language: "en-US",
+        include_adult: false,
+        page: 1,
+      },
+    }); */
+
+/* async function getGenres() {
     const { data } = await api.get(`genre/movie/list`, {
       params: {
         language: "en-US",
@@ -89,58 +164,4 @@ const Home: React.FC = () => {
     const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
       setLoading(false);
     }, 1200);
-  }
-
-  return (
-    <>
-      <Section>
-        <Container>
-          <h1>Popular</h1>
-          <Modal
-            style={modalStyles}
-            isOpen={toggleModal}
-            onRequestClose={() => setToggleModal(!toggleModal)}
-          >
-            {currentMovie && (
-              <TrailerModal
-                movie={currentMovie}
-                loading={loading}
-                trailerGenres={currentGenres}
-              />
-            )}
-          </Modal>
-
-          <MovieContainer>
-            {movies?.map((movie) => (
-              <MovieImage
-                key={movie.id}
-                src={IMAGE_PATH + `${movie.poster_path}`}
-                alt={movie.title}
-                onClick={() => openModal(movie)}
-              />
-            ))}
-          </MovieContainer>
-        </Container>
-      </Section>
-    </>
-  );
-};
-
-export default Home;
-
-{
-  /* {loading && <TrailerLoading />} */
-}
-{
-  /* <TrailerTitle text={currentMovie.title} />
-                <Trailer movie={currentMovie} />
-                <TrailerDescription text={currentMovie.overview} /> */
-}
-
-/* const { data } = await api.get("discover/movie", {
-      params: {
-        language: "en-US",
-        include_adult: false,
-        page: 1,
-      },
-    }); */
+  } */

@@ -10,6 +10,7 @@ interface Props {
   data: Movie[] | null;
   title: string;
   id: number;
+  autoplay?: boolean;
 }
 
 const headerStyles = {
@@ -19,7 +20,12 @@ const headerStyles = {
   alignItems: "center",
 };
 
-const GenrePreviewContainer: React.FC<Props> = ({ data, title, id }) => {
+const GenrePreviewContainer: React.FC<Props> = ({
+  data,
+  title,
+  id,
+  autoplay,
+}) => {
   return (
     <>
       <Container>
@@ -27,7 +33,7 @@ const GenrePreviewContainer: React.FC<Props> = ({ data, title, id }) => {
           <h2>{title}</h2>
           <Link to={`/genre/${id}`}>View more</Link>
         </div>
-        <SwipeSlider data={data} />
+        <SwipeSlider data={data} autoplay={autoplay} />
       </Container>
     </>
   );

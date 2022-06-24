@@ -25,6 +25,7 @@ interface MovieWithGenreOptions {
     include_adult: boolean;
     with_genres: number | string;
     without_genres: number | string;
+    page?: number;
   };
 }
 
@@ -34,6 +35,7 @@ const movieWithGenreOptions: MovieWithGenreOptions = {
     include_adult: false,
     with_genres: 28,
     without_genres: 16,
+    page: 1,
   },
 };
 
@@ -56,14 +58,26 @@ function cleanResults(data: Movies) {
       !movie.title.toLocaleLowerCase().includes("porn") &&
       !movie.title.toLocaleLowerCase().includes("female") &&
       !movie.title.toLocaleLowerCase().includes("semen") &&
-      !movie.title.toLocaleLowerCase().includes("sex")
+      !movie.title.toLocaleLowerCase().includes("sex") &&
+      !movie.title.toLocaleLowerCase().includes("cannibal") &&
+      !movie.title.toLocaleLowerCase().includes("torment") &&
+      !movie.title.toLocaleLowerCase().includes("lust") &&
+      !movie.title.toLocaleLowerCase().includes("trip 6") &&
+      !movie.title.toLocaleLowerCase().includes("fire island") &&
+      !movie.title.toLocaleLowerCase().includes("xxx") &&
+      !movie.title.toLocaleLowerCase().includes("seducing")
   );
+}
+
+function moviesWithPostersOnly(data: Movies) {
+  return data.results.filter((poster) => poster.poster_path !== null);
 }
 
 let fetchMovies: (path: string, params: { params: object }) => Promise<Movies>;
 let fetchMoviesWithGenre: (
   id: number,
-  notId: number | string
+  notId: number | string,
+  params?: { params: object } | null
 ) => Promise<Movies>;
 let fetchGenres: (path: string) => Promise<Genres>;
 let fetchTrailer: (id: number) => Promise<{ key: string }> | undefined;
@@ -71,14 +85,19 @@ let fetchTrailer: (id: number) => Promise<{ key: string }> | undefined;
 fetchMovies = async (path, params) => {
   const { data } = await api.get(path, params);
   data.results = cleanResults(data);
+  data.results = moviesWithPostersOnly(data);
   return data;
 };
 
-fetchMoviesWithGenre = async (id, notId) => {
+fetchMoviesWithGenre = async (id, notId, params = null) => {
   movieWithGenreOptions.params.with_genres = id;
   movieWithGenreOptions.params.without_genres = notId;
-  const { data } = await api.get("discover/movie", movieWithGenreOptions);
+  const { data } = await api.get(
+    "discover/movie",
+    params ? params : movieWithGenreOptions
+  );
   data.results = cleanResults(data);
+  data.results = moviesWithPostersOnly(data);
   return data;
 };
 
@@ -105,4 +124,5 @@ export {
   IMAGE_PATH,
   BACKDROP_PATH,
   movieOptions,
+  movieWithGenreOptions,
 };
