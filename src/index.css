@@ -1,5 +1,9 @@
 /* swiper js style overrides */
 
+.active-nav-link {
+  color: #b20600;
+}
+
 .swiper {
   width: 100%;
   padding: 0px 50px;

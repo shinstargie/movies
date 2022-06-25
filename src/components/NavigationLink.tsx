@@ -10,7 +10,9 @@ interface Props {
 const NavigationLink: React.FC<Props> = ({ text, to }) => {
   return (
     <StyledNavigationLink>
-      <NavLink to={to}>{text}</NavLink>
+      <NavLink exact activeClassName="active-nav-link" to={to}>
+        {text}
+      </NavLink>
     </StyledNavigationLink>
   );
 };
