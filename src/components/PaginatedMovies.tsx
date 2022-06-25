@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import toast from "react-hot-toast";
 import ReactPaginate from "react-paginate";
 import { fetchGenres, fetchTrailer, IMAGE_PATH } from "../api";
@@ -9,7 +9,8 @@ import StyledMovieCardLoader from "./styles/StyledMovieCardLoader.styled";
 import TrailerModal from "./TrailerModal";
 import { Genre, Movie } from "./_types";
 import Modal from "react-modal";
-import { useParams } from "react-router-dom";
+import { GenreContext } from "./../context/GenreContext";
+import CustomModal from "./CustomModal";
 
 interface Props {
   data: Movie[] | null;
@@ -27,20 +28,11 @@ const PaginatedMovies: React.FC<Props> = ({ data, onPageChange }) => {
   // hard page limit with /discover route implemented by API
   const pageLimitSetByApi = 500;
   const [toggleModal, setToggleModal] = useState<boolean>(false);
-  const [genres, setGenres] = useState<Genre[] | null>(null);
+  // const [genres, setGenres] = useState<Genre[] | null>(null);
   const [currentMovie, setCurrentMovie] = useState<Movie | null>(null);
   const [currentGenres, setCurrentGenres] = useState<Genre[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const { id } = useParams<Params>();
-
-  useEffect(() => {
-    getGenres();
-  }, []);
-
-  async function getGenres() {
-    const data = await fetchGenres("genre/movie/list");
-    setGenres(data.genres);
-  }
+  const { genres } = useContext(GenreContext);
 
   function matchGenres(movie: Movie) {
     if (genres) {
@@ -68,19 +60,13 @@ const PaginatedMovies: React.FC<Props> = ({ data, onPageChange }) => {
 
   return (
     <>
-      <Modal
-        style={modalStyles}
-        isOpen={toggleModal}
-        onRequestClose={() => setToggleModal(!toggleModal)}
-      >
-        {currentMovie && (
-          <TrailerModal
-            movie={currentMovie}
-            loading={loading}
-            trailerGenres={currentGenres}
-          />
-        )}
-      </Modal>
+      <CustomModal
+        loading={loading}
+        toggleModal={toggleModal}
+        closeModal={() => setToggleModal(!toggleModal)}
+        movie={currentMovie}
+        matchedGenres={currentGenres}
+      />
 
       <MovieContainer>
         {!data &&
@@ -115,6 +101,32 @@ const PaginatedMovies: React.FC<Props> = ({ data, onPageChange }) => {
 };
 
 export default PaginatedMovies;
+
+{
+  /* 
+      <Modal
+        style={modalStyles}
+        isOpen={toggleModal}
+        onRequestClose={() => setToggleModal(!toggleModal)}
+      >
+        {currentMovie && (
+          <TrailerModal
+            movie={currentMovie}
+            loading={loading}
+            trailerGenres={currentGenres}
+          />
+        )}
+      </Modal> */
+}
+
+/* useEffect(() => {
+    getGenres();
+  }, []); */
+
+/* async function getGenres() {
+    const data = await fetchGenres("genre/movie/list");
+    setGenres(data.genres);
+  } */
 
 // const data = await fetchGenres("genre/movie/list");
 

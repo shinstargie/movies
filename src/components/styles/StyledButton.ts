@@ -9,8 +9,7 @@ const StyledButton = styled.button<{ primary?: boolean }>`
   color: white;
   border-color: white;
   border-style: solid;
-  transition: background-color 250ms ease-in;
-  transition: transform 50ms ease;
+  transition: background-color 250ms ease-in-out;
 
   &:hover {
     background-color: ${({ theme, primary }) =>
