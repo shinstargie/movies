@@ -14,6 +14,7 @@ import Modal from "react-modal";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { swiperBreakpoints } from "./styles/_breakpoints";
 
 const SwiperButtonPrevious = ({ children }: any) => {
   const swiper = useSwiper();
@@ -103,8 +104,9 @@ const SwipeSlider: React.FC<Props> = ({ data, autoplay }) => {
         </Modal>
 
         <Swiper
+          breakpoints={swiperBreakpoints}
           modules={[Pagination, Navigation, Autoplay, A11y]}
-          slidesPerView={6}
+          /* slidesPerView={6} */
           spaceBetween={25}
           navigation
           pagination={{ clickable: true }}

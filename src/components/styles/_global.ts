@@ -12,6 +12,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h2 {
+  margin: 0;
+  margin-bottom: 20px;
+}
+
 a {
   text-decoration: none;
   color: white;

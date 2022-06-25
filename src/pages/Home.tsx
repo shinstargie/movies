@@ -1,95 +1,116 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Section from "./../components/Section";
-import { fetchMoviesWithGenre } from "../api";
+import { BACKDROP_PATH, fetchMoviesWithGenre } from "../api";
 import { Movie } from "../components/_types";
 import GenrePreviewContainer from "./../components/GenrePreviewContainer";
 import GenrePreviewLoading from "../components/styles/GenrePreviewLoading.styled";
 import MovieContainer from "./../components/styles/MovieContainer.styled";
+import Container from "../components/Container";
+import Hero from "../components/Hero";
 
 interface Props {}
 
 const Home: React.FC<Props> = ({}) => {
-  const [actionMovies, setActionMovies] = useState<Movie[] | null>(null);
-  const [adventureMovies, setAdventureMovies] = useState<Movie[] | null>(null);
-  const [animationMovies, setAnimationMovies] = useState<Movie[] | null>(null);
-  const [comedyMovies, setComedyMovies] = useState<Movie[] | null>(null);
-  const [crimeMovies, setCrimeMovies] = useState<Movie[] | null>(null);
-  const [documentaryMovies, setDocumentaryMovies] = useState<Movie[] | null>(
-    null
-  );
-  const [dramaMovies, setDramaMovies] = useState<Movie[] | null>(null);
-  const [familyMovies, setFamilyMovies] = useState<Movie[] | null>(null);
-  const [fantasyMovies, setFantasyMovies] = useState<Movie[] | null>(null);
+  const [action, setAction] = useState<Movie[] | null>(null);
+  const [adventure, setAdventure] = useState<Movie[] | null>(null);
+  const [animation, setAnimation] = useState<Movie[] | null>(null);
+  const [comedy, setComedy] = useState<Movie[] | null>(null);
+  const [crime, setCrime] = useState<Movie[] | null>(null);
+  const [docu, setDocu] = useState<Movie[] | null>(null);
+  const [drama, setDrama] = useState<Movie[] | null>(null);
+  const [family, setFamily] = useState<Movie[] | null>(null);
+  const [fantasy, setFantasy] = useState<Movie[] | null>(null);
+  const [history, setHistory] = useState<Movie[] | null>(null);
+  const [horror, setHorror] = useState<Movie[] | null>(null);
+
   const [loading, setLoading] = useState<boolean>(true);
   const loadingItems = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
   ];
+  const [featured, setFeatured] = useState<Movie | null | undefined>(null);
 
   useEffect(() => {
-    getActionMovies();
-    getAdventureMovies();
-    getAnimationMovies();
-    getComedyMovies();
-    getCrimeMovies();
-    getDocumentaryMovies();
-    getDramaMovies();
-    getFamilyMovies();
-    getFantasyMovies();
+    getAction();
+    getAdventure();
+    getAnimation();
+    getComedy();
+    getCrime();
+    getDocu();
+    getDrama();
+    getFamily();
+    getFantasy();
+    getHistory();
+    getHorror();
   }, []);
 
-  async function getActionMovies() {
-    /* const timeout: ReturnType<typeof setTimeout> = setTimeout(async () => {
-      
-      setLoading(false);
-    }, 50000); */
-
+  async function getAction() {
     const data = await fetchMoviesWithGenre(28, 16);
-    setActionMovies(data.results);
+    setFeatured(data.results.shift());
+    setAction(data.results);
   }
 
-  async function getAdventureMovies() {
+  async function getAdventure() {
     const data = await fetchMoviesWithGenre(12, 28);
-    setAdventureMovies(data.results);
+    setAdventure(data.results);
   }
 
-  async function getAnimationMovies() {
+  async function getAnimation() {
     const data = await fetchMoviesWithGenre(16, "12,28");
-    setAnimationMovies(data.results);
+    setAnimation(data.results);
   }
 
-  async function getComedyMovies() {
+  async function getComedy() {
     const data = await fetchMoviesWithGenre(35, "12,28,16");
-    setComedyMovies(data.results);
+    setComedy(data.results);
   }
 
-  async function getCrimeMovies() {
+  async function getCrime() {
     const data = await fetchMoviesWithGenre(80, "12,28,16,35");
-    setCrimeMovies(data.results);
+    setCrime(data.results);
   }
 
-  async function getDocumentaryMovies() {
+  async function getDocu() {
     const data = await fetchMoviesWithGenre(99, "12,28,16,35,80");
-    setDocumentaryMovies(data.results);
+    setDocu(data.results);
   }
 
-  async function getDramaMovies() {
+  async function getDrama() {
     const data = await fetchMoviesWithGenre(18, "12,28,16,35,80,99");
-    setDramaMovies(data.results);
+    setDrama(data.results);
   }
 
-  async function getFamilyMovies() {
+  async function getFamily() {
     const data = await fetchMoviesWithGenre(10751, "12,28,16,35,80,99,18");
-    setFamilyMovies(data.results);
+    setFamily(data.results);
   }
 
-  async function getFantasyMovies() {
+  async function getFantasy() {
     const data = await fetchMoviesWithGenre(14, "12,28,16,35,80,99,18,10751");
-    setFantasyMovies(data.results);
+    setFantasy(data.results);
+  }
+
+  async function getHistory() {
+    const data = await fetchMoviesWithGenre(
+      36,
+      "12,28,16,35,80,99,18,10751,14"
+    );
+    setHistory(data.results);
+    setLoading(false);
+  }
+
+  async function getHorror() {
+    const data = await fetchMoviesWithGenre(
+      27,
+      "12,28,16,35,80,99,18,10751,14,36"
+    );
+    setHorror(data.results);
     setLoading(false);
   }
 
   return (
     <>
+      <Hero data={featured} loading={loading} />
+
       {loading && (
         <Section>
           <MovieContainer>
@@ -103,35 +124,21 @@ const Home: React.FC<Props> = ({}) => {
       {!loading && (
         <Section>
           <GenrePreviewContainer
-            data={actionMovies}
+            data={action}
             title="Action"
             id={28}
             autoplay={true}
           />
-          <GenrePreviewContainer
-            data={adventureMovies}
-            title="Adventure"
-            id={12}
-          />
-          <GenrePreviewContainer
-            data={animationMovies}
-            title="Animation"
-            id={16}
-          />
-          <GenrePreviewContainer data={comedyMovies} title="Comedy" id={35} />
-          <GenrePreviewContainer data={crimeMovies} title="Crime" id={80} />
-          <GenrePreviewContainer
-            data={documentaryMovies}
-            title="Documentary"
-            id={99}
-          />
-          <GenrePreviewContainer data={dramaMovies} title="Drama" id={18} />
-          <GenrePreviewContainer
-            data={familyMovies}
-            title="Family"
-            id={10751}
-          />
-          <GenrePreviewContainer data={fantasyMovies} title="Fantasy" id={14} />
+          <GenrePreviewContainer data={adventure} title="Adventure" id={12} />
+          <GenrePreviewContainer data={animation} title="Animation" id={16} />
+          <GenrePreviewContainer data={comedy} title="Comedy" id={35} />
+          <GenrePreviewContainer data={crime} title="Crime" id={80} />
+          <GenrePreviewContainer data={docu} title="Documentary" id={99} />
+          <GenrePreviewContainer data={drama} title="Drama" id={18} />
+          <GenrePreviewContainer data={family} title="Family" id={10751} />
+          <GenrePreviewContainer data={fantasy} title="Fantasy" id={14} />
+          <GenrePreviewContainer data={history} title="History" id={36} />
+          <GenrePreviewContainer data={horror} title="Horror" id={27} />
         </Section>
       )}
     </>
@@ -139,3 +146,8 @@ const Home: React.FC<Props> = ({}) => {
 };
 
 export default Home;
+
+/* const timeout: ReturnType<typeof setTimeout> = setTimeout(async () => {
+      
+      setLoading(false);
+    }, 50000); */

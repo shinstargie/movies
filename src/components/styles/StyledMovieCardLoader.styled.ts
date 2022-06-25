@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import device from "./_breakpoints";
+import { device } from "./_breakpoints";
 
 const StyledMovieCardLoader = styled.div`
   display: block;

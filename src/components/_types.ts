@@ -10,6 +10,7 @@ export interface Movie {
   };
   release_date: string;
   genre_ids: number[];
+  backdrop_path: string;
 }
 
 export interface Movies {
@@ -25,4 +26,9 @@ export interface Genre {
 }
 export interface Genres {
   genres: Genre[];
+}
+
+export interface GenreContextInterface {
+  genres: Genre[] | null;
+  genresLoading: boolean;
 }

@@ -6,13 +6,11 @@ import { Movie } from "../components/_types";
 import Container from "./../components/Container";
 import PaginatedMovies from "./../components/PaginatedMovies";
 
-interface Props {}
-
 interface ParamId {
   id: string;
 }
 
-const GenreBased: React.FC<Props> = ({}) => {
+const GenreBased: React.FC = ({}) => {
   const { id } = useParams<ParamId>();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [currentMovies, setCurrentMovies] = useState<Movie[] | null>(null);
