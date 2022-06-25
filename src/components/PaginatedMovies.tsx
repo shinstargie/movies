@@ -15,13 +15,18 @@ import CustomModal from "./CustomModal";
 interface Props {
   data: Movie[] | null;
   onPageChange: (event: { selected: number }) => void;
+  totalPages?: number;
 }
 
-interface Params {
+/* interface Params {
   id: string;
-}
+} */
 
-const PaginatedMovies: React.FC<Props> = ({ data, onPageChange }) => {
+const PaginatedMovies: React.FC<Props> = ({
+  data,
+  onPageChange,
+  totalPages: totalpages,
+}) => {
   const loadingItems = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
   ];
@@ -88,7 +93,7 @@ const PaginatedMovies: React.FC<Props> = ({ data, onPageChange }) => {
         onPageChange={onPageChange}
         pageRangeDisplayed={5}
         /* pageCount={discoverRoutePageCountLimit} */
-        pageCount={pageLimitSetByApi}
+        pageCount={totalpages ? totalpages : pageLimitSetByApi}
         previousLabel="< previous"
         renderOnZeroPageCount={() => null}
         containerClassName="pagination"

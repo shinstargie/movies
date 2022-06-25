@@ -8,6 +8,8 @@ import Navigation from "./components/Navigation";
 import { Toaster } from "react-hot-toast";
 import GenreBased from "./pages/GenreBased";
 import { ThemeProvider } from "styled-components";
+import Search from "./pages/Search";
+import { SearchContextProvider } from "./context/SearchContext";
 
 function App() {
   const theme = {
@@ -24,11 +26,14 @@ function App() {
         <GlobalStyles />
         <Toaster position="top-right" />
         <Router>
-          <Navigation />
-          <Route path="/" exact component={Home} />
-          <Route path="/popular" component={Popular} />
-          <Route path="/paginate" component={Paginate} />
-          <Route path="/genre/:id" component={GenreBased} />
+          <SearchContextProvider>
+            <Navigation />
+            <Route path="/" exact component={Home} />
+            <Route path="/popular" component={Popular} />
+            <Route path="/paginate" component={Paginate} />
+            <Route path="/genre/:id" component={GenreBased} />
+            <Route path="/search" component={Search} />
+          </SearchContextProvider>
         </Router>
       </ThemeProvider>
     </>

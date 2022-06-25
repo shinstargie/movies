@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Genres, Movies } from "./components/_types";
+import { Genres, Movie, Movies } from "./components/_types";
 
 const api = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
@@ -82,6 +82,15 @@ let fetchMoviesWithGenre: (
 ) => Promise<Movies>;
 let fetchGenres: (path: string) => Promise<Genres>;
 let fetchTrailer: (id: number) => Promise<{ key: string }> | undefined;
+let fetchSearchResults: (searchTerm: string, page: number) => any;
+
+fetchSearchResults = async (searchTerm, page) => {
+  const options = { params: { query: searchTerm, page } };
+  const { data } = await api.get("search/movie", options);
+  data.results = cleanResults(data);
+  data.results = moviesWithPostersOnly(data);
+  return data;
+};
 
 fetchMovies = async (path, params) => {
   const { data } = await api.get(path, params);
@@ -121,6 +130,7 @@ export {
   fetchMoviesWithGenre,
   fetchGenres,
   fetchTrailer,
+  fetchSearchResults,
   api,
   IMAGE_PATH,
   BACKDROP_PATH,

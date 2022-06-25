@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, FormEvent } from "react";
 import Section from "./../components/Section";
-import { BACKDROP_PATH, fetchMoviesWithGenre } from "../api";
+import { fetchMoviesWithGenre, fetchSearchResults } from "../api";
 import { Movie } from "../components/_types";
 import GenrePreviewContainer from "./../components/GenrePreviewContainer";
 import GenrePreviewLoading from "../components/styles/GenrePreviewLoading.styled";
@@ -146,6 +146,23 @@ const Home: React.FC<Props> = ({}) => {
 };
 
 export default Home;
+
+{
+  /* <form onSubmit={handleSearchSubmit}>
+        <input
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </form> */
+}
+
+/* const [searchTerm, setSearchTerm] = useState("");
+
+  async function handleSearchSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = await fetchSearchResults(searchTerm);
+    console.log(data);
+  } */
 
 /* const timeout: ReturnType<typeof setTimeout> = setTimeout(async () => {
       

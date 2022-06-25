@@ -1,7 +1,8 @@
 /* swiper js style overrides */
 
 .active-nav-link {
-  color: #b20600;
+  /* color: #b20600; */
+  font-weight: 700;
 }
 
 .swiper {
@@ -51,12 +52,12 @@
   align-items: center;
 }
 
-/* .swiper-slide img {
+.swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-} */
+}
 
 .swiper-btn-left {
   left: 0px;
