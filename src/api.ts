@@ -10,6 +10,7 @@ const api = axios.create({
 
 const IMAGE_PATH = "https://image.tmdb.org/t/p/w300";
 const BACKDROP_PATH = "https://image.tmdb.org/t/p/original";
+// w1280
 
 const movieOptions = {
   params: {

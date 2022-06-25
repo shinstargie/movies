@@ -1,6 +1,13 @@
 import React from "react";
-import { BACKDROP_PATH } from "../api";
+import HeroSection from "./HeroSection";
+import HeroContainer from "./HeroContainer";
+import HeroContent from "./HeroContent";
+import StyledHeroTitle from "./styles/StyledHeroTitle.styled";
+import StyledButton from "./styles/StyledButton";
+
 import { Movie } from "./_types";
+import StyledHeroDescription from "./styles/StyledHeroDescription.styled";
+import StyledHeroLoader from "./styles/StyledHeroLoader.styled";
 
 interface Props {
   data: Movie | null | undefined;
@@ -10,52 +17,26 @@ interface Props {
 const Hero: React.FC<Props> = ({ data, loading }) => {
   return (
     <>
+      {loading && <StyledHeroLoader />}
       {!loading && (
-        <div
-          style={{
-            display: "flex",
-            padding: "60px 0px",
-            justifyContent: "center",
-            alignItems: "end",
-            height: "850px",
-            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.85)), url(${
-              BACKDROP_PATH + data?.backdrop_path
-            }`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <div
-            style={{
-              width: "100%",
-              maxWidth: "1440px",
-            }}
-          >
-            <div
-              style={{
-                marginRight: "auto",
-                maxWidth: "750px",
-              }}
-            >
-              <h2
-                style={{
-                  fontSize: "60px",
-                  fontWeight: "800",
-                  lineHeight: "1.15",
-                }}
-              >
-                {data?.title}
-              </h2>
-              <p
-                style={{
-                  fontSize: "20px",
-                  lineHeight: "1.5",
-                }}
-              >
-                {data?.overview}
-              </p>
-              <button
+        <HeroSection bgImg={data?.backdrop_path}>
+          <HeroContainer>
+            <HeroContent>
+              <StyledHeroTitle>{data?.title}</StyledHeroTitle>
+              <StyledHeroDescription>{data?.overview}</StyledHeroDescription>
+              <StyledButton primary>Play Trailer</StyledButton>
+            </HeroContent>
+          </HeroContainer>
+        </HeroSection>
+      )}
+    </>
+  );
+};
+
+export default Hero;
+
+{
+  /* <button
                 style={{
                   padding: "15px 20px",
                   fontSize: "20px",
@@ -66,13 +47,37 @@ const Hero: React.FC<Props> = ({ data, loading }) => {
                 }}
               >
                 Play trailer
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
-  );
-};
+              </button> */
+}
 
-export default Hero;
+{
+  /* <div
+              style={{
+                marginRight: "auto",
+                maxWidth: "750px",
+              }}
+            ></div> */
+}
+
+{
+  /* <p
+  style={{
+    fontSize: "20px",
+    lineHeight: "1.5",
+  }}
+>
+  {data?.overview}
+</p>; */
+}
+
+{
+  /* <h2
+                style={{
+                  fontSize: "60px",
+                  fontWeight: "800",
+                  lineHeight: "1.15",
+                }}
+              >
+                {data?.title}
+              </h2> */
+}
