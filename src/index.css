@@ -112,6 +112,54 @@
   background-color: #b20600;
 }
 
+/* Dropdown styles */
+
+.Dropdown-control {
+  width: 173px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.Dropdown-root {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.Dropdown-menu {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 600px;
+  padding: 15px;
+  overflow: visible;
+  background-color: black;
+}
+
+.Dropdown-option {
+  display: inline !important;
+  height: auto;
+  color: white;
+}
+
+.Dropdown-option:hover {
+  display: inline !important;
+  height: auto;
+  color: white;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.Dropdown-option.is-selected {
+  /* background-color: rgb(255, 255, 255, 0.15) !important; */
+  background-color: transparent;
+  text-decoration: underline;
+  color: white;
+}
+
+.Dropdown-option.is-selected:hover {
+  background-color: rgb(255, 255, 255, 0.15);
+}
+
 /* .swiper-container {
   width: 480px;
 } */

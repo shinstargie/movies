@@ -16,6 +16,7 @@ interface Props {
   data: Movie[] | null;
   onPageChange: (event: { selected: number }) => void;
   totalPages?: number;
+  resetPage?: number;
 }
 
 /* interface Params {
@@ -26,6 +27,7 @@ const PaginatedMovies: React.FC<Props> = ({
   data,
   onPageChange,
   totalPages: totalpages,
+  resetPage,
 }) => {
   const loadingItems = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
@@ -63,44 +65,56 @@ const PaginatedMovies: React.FC<Props> = ({
     }, 1200);
   }
 
+  /*const [remountComponent, setRemountComponent] = useState(0);
+
+   useEffect(() => {
+    setRemountComponent(Math.random());
+    return () => setRemountComponent(Math.random());
+  }, []); */
+
   return (
     <>
-      <CustomModal
-        loading={loading}
-        toggleModal={toggleModal}
-        closeModal={() => setToggleModal(!toggleModal)}
-        movie={currentMovie}
-        matchedGenres={currentGenres}
-      />
+      <div key={resetPage}>
+        <CustomModal
+          loading={loading}
+          toggleModal={toggleModal}
+          closeModal={() => setToggleModal(!toggleModal)}
+          movie={currentMovie}
+          matchedGenres={currentGenres}
+        />
 
-      <MovieContainer>
-        {!data &&
-          loadingItems.map((item, idx) => <StyledMovieCardLoader key={idx} />)}
+        <MovieContainer>
+          {!data &&
+            loadingItems.map((item, idx) => (
+              <StyledMovieCardLoader key={idx} />
+            ))}
 
-        {data?.map((movie: any) => (
-          <MovieImage
-            key={movie.id}
-            src={IMAGE_PATH + `${movie.poster_path}`}
-            alt={movie.title}
-            onClick={() => openModal(movie)}
-          />
-        ))}
-      </MovieContainer>
+          {data?.map((movie: any) => (
+            <MovieImage
+              key={movie.id}
+              src={IMAGE_PATH + `${movie.poster_path}`}
+              alt={movie.title}
+              onClick={() => openModal(movie)}
+            />
+          ))}
+        </MovieContainer>
 
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel="next >"
-        onPageChange={onPageChange}
-        pageRangeDisplayed={5}
-        /* pageCount={discoverRoutePageCountLimit} */
-        pageCount={totalpages ? totalpages : pageLimitSetByApi}
-        previousLabel="< previous"
-        renderOnZeroPageCount={() => null}
-        containerClassName="pagination"
-        pageLinkClassName="page-num"
-        previousLinkClassName="page-num"
-        nextLinkClassName="page-num"
-      />
+        <ReactPaginate
+          previousLabel="< previous"
+          breakLabel="..."
+          nextLabel="next >"
+          initialPage={0}
+          onPageChange={onPageChange}
+          pageRangeDisplayed={5}
+          /* pageCount={discoverRoutePageCountLimit} */
+          pageCount={totalpages ? totalpages : pageLimitSetByApi}
+          renderOnZeroPageCount={() => null}
+          containerClassName="pagination"
+          pageLinkClassName="page-num"
+          previousLinkClassName="page-num"
+          nextLinkClassName="page-num"
+        />
+      </div>
     </>
   );
 };

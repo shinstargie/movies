@@ -31,7 +31,6 @@ const Popular: React.FC = () => {
     <>
       <Section>
         <Container>
-          <h1>Popular Movies</h1>
           <PaginatedMovies data={currentMovies} onPageChange={onPageChange} />
         </Container>
       </Section>
