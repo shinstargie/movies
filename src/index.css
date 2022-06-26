@@ -116,6 +116,14 @@
 
 /* Dropdown styles */
 
+/* .open-dropdown {
+  display: block;
+}
+
+.close-dropdown {
+  display: none !important;
+} */
+
 .Dropdown-control {
   width: 173px;
   background-color: black;

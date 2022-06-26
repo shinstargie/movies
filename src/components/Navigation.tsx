@@ -5,19 +5,29 @@ import { SearchContext } from "../context/SearchContext";
 import { useHistory } from "react-router-dom";
 import StyledNavConainer from "./styles/StyledNavContainer.styled";
 import StyledInput from "./styles/StyledInput.styled";
-import Dropdown, { Option } from "react-dropdown";
 import "react-dropdown/style.css";
 import { GenreContext } from "./../context/GenreContext";
+import Select, { ActionMeta, SingleValue } from "react-select";
+import { reactSelectStyles } from "../components/styles/customStyles";
 
 interface Props {}
 
 const Navigation: React.FC<Props> = ({}) => {
-  const { searchInput, handleInputSearch } = useContext(SearchContext);
-  const [genreOptions, setGenreOptions] = useState<Option[] | undefined>(
-    undefined
-  );
-  const { genres } = useContext(GenreContext);
   const history = useHistory();
+  const { searchInput, handleInputSearch } = useContext(SearchContext);
+  const { genres } = useContext(GenreContext);
+  const [genreOptions, setGenreOptions] = useState<
+    { label: string; value: string }[] | undefined
+  >();
+
+  const [chosenGenreOption, setChosenGenreOption] = useState<
+    | {
+        label: string;
+        value: string;
+      }
+    | undefined
+    | null
+  >();
 
   useEffect(() => {
     const options = genres?.map((genre) => ({
@@ -32,8 +42,34 @@ const Navigation: React.FC<Props> = ({}) => {
     if (term.length === 0) return history.push("/");
   }
 
-  function routeToGenre(option: Option) {
+  /* interface GenreSelectProps {
+    option: { label: string; value: string } | null;
+    actionMeta: ActionMeta<{ label: string; value: string }>;
+  } */
+
+  // { option, actionMeta }: GenreSelectProps
+
+  interface GenreSelectOption {
+    value: string;
+    label: string;
+  }
+
+  function handleGenreChange(
+    option: SingleValue<GenreSelectOption> | null,
+    actionMeta: ActionMeta<GenreSelectOption>
+  ) {
+    console.log(option);
+    setChosenGenreOption(option);
+    // console.log(actionMeta);
+    // if (!option && actionMeta.action === "clear") return;
+    if (!option) return history.push(`/`);
     history.push(`/genre/${Number(option.value)}`);
+  }
+
+  function handleNavLinkClick() {
+    handleInputSearch("");
+    setChosenGenreOption(null);
+    // handleGenreChange(null);
   }
 
   return (
@@ -45,33 +81,32 @@ const Navigation: React.FC<Props> = ({}) => {
               display: "flex",
               alignItems: "center",
             }}
-            onClick={() => handleInputSearch("")}
           >
-            <NavigationLink
-              /* onClick={() => handleInputSearch("")} */
-              to="/"
-              text="Home"
-            />
+            <NavigationLink onClick={handleNavLinkClick} to="/" text="Home" />
             <NavigationLink
               to="/trending"
               text="Trending"
-              /* onClick={() => handleInputSearch("")} */
+              onClick={handleNavLinkClick}
             />
             <NavigationLink
               to="/top-rated"
               text="Top Rated"
-              /* onClick={() => handleInputSearch("")} */
+              onClick={handleNavLinkClick}
             />
             <NavigationLink
               to="/upcoming"
               text="Upcoming"
-              /* onClick={() => handleInputSearch("")} */
+              onClick={handleNavLinkClick}
             />
             {genreOptions && (
-              <Dropdown
+              <Select
+                value={chosenGenreOption}
+                styles={reactSelectStyles}
+                placeholder="Genre"
                 options={genreOptions}
-                placeholder="Genres"
-                onChange={routeToGenre}
+                onChange={handleGenreChange}
+                isClearable={true}
+                isSearchable={false}
               />
             )}
           </div>
@@ -88,3 +123,26 @@ const Navigation: React.FC<Props> = ({}) => {
 };
 
 export default Navigation;
+
+/* onClick={() => {
+              handleInputSearch("");
+              handleGenreChange(null, { action: "clear" });
+              // if (!window.location.pathname.includes("upcoming")) return;
+              if (!window.location.pathname.includes("genre")) {
+                // setSelectedGenre(Math.random());
+                setChooseOption("");
+              }
+            }} */
+
+{
+  /* {genreOptions && (
+              <div key={selectedGenre}>
+                <Dropdown
+                  value={chooseOption}
+                  options={genreOptions}
+                  placeholder="Genres"
+                  onChange={routeToGenre}
+                />
+              </div>
+            )} */
+}

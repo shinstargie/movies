@@ -43,15 +43,17 @@ const Home: React.FC<Props> = ({}) => {
     getHorror();
   }, []);
 
+  function chooseFeaturedMovie(movie: Movie[]) {
+    const sonic = movie.find((movie: Movie) =>
+      movie.title.toLowerCase().includes("sonic")
+    );
+    if (!sonic) return setFeatured(movie.shift());
+    setFeatured(sonic);
+  }
+
   async function getAction() {
     const data = await fetchMoviesWithGenre(28, 16);
-    // console.log((Math.random() * 20).toFixed());
-    // console.log(data.results.length);
-    const randomMovie: number = Number(
-      (Math.random() * data.results.length).toFixed()
-    );
-    setFeatured(data.results[randomMovie]);
-    // setFeatured(data.results.shift());
+    chooseFeaturedMovie(data.results);
     setAction(data.results);
   }
 
@@ -152,6 +154,10 @@ const Home: React.FC<Props> = ({}) => {
 };
 
 export default Home;
+
+/* const randomMovie: number = Number(
+    (Math.random() * data.results.length).toFixed()
+  ); */
 
 {
   /* <form onSubmit={handleSearchSubmit}>

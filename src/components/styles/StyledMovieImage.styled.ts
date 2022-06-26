@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const StyledMovieImage = styled.img`
+  position: relative;
   width: 100%;
   cursor: pointer;
   /* min-height: 402px; */

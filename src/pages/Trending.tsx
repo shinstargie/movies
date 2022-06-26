@@ -8,7 +8,7 @@ import PaginatedMovies from "../components/PaginatedMovies";
 
 Modal.setAppElement("#root");
 
-const Popular: React.FC = () => {
+const Trending: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [currentMovies, setCurrentMovies] = useState<Movie[] | null>(null);
 
@@ -38,7 +38,7 @@ const Popular: React.FC = () => {
   );
 };
 
-export default Popular;
+export default Trending;
 
 /* const [toggleModal, setToggleModal] = useState<boolean>(false);
   const [movies, setMovies] = useState<Movie[] | null>(null);

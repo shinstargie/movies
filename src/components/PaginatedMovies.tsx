@@ -1,14 +1,11 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import toast from "react-hot-toast";
 import ReactPaginate from "react-paginate";
-import { fetchGenres, fetchTrailer, IMAGE_PATH } from "../api";
+import { fetchTrailer, IMAGE_PATH } from "../api";
 import MovieImage from "./MovieImage";
-import { modalStyles } from "./styles/customStyles";
 import MovieContainer from "./styles/MovieContainer.styled";
 import StyledMovieCardLoader from "./styles/StyledMovieCardLoader.styled";
-import TrailerModal from "./TrailerModal";
 import { Genre, Movie } from "./_types";
-import Modal from "react-modal";
 import { GenreContext } from "./../context/GenreContext";
 import CustomModal from "./CustomModal";
 
@@ -90,12 +87,35 @@ const PaginatedMovies: React.FC<Props> = ({
             ))}
 
           {data?.map((movie: any) => (
-            <MovieImage
-              key={movie.id}
-              src={IMAGE_PATH + `${movie.poster_path}`}
-              alt={movie.title}
-              onClick={() => openModal(movie)}
-            />
+            <div key={movie.id} style={{ position: "relative" }}>
+              <MovieImage
+                /* key={movie.id} */
+                src={IMAGE_PATH + `${movie.poster_path}`}
+                alt={movie.title}
+                onClick={() => openModal(movie)}
+              />
+              {movie.vote_average !== 0 && (
+                <div
+                  style={{
+                    position: "absolute",
+                    border: "1px solid rgba(255,255,255,0.40)",
+                    fontSize: "12px",
+                    lineHeight: "1",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    top: "-12px",
+                    right: "-12px",
+                    height: "34px",
+                    width: "34px",
+                    borderRadius: "50%",
+                    backgroundColor: "black",
+                  }}
+                >
+                  {movie.vote_average.toFixed(1)}
+                </div>
+              )}
+            </div>
           ))}
         </MovieContainer>
 

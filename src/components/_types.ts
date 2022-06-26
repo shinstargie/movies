@@ -1,3 +1,5 @@
+import { Dispatch } from "react";
+
 export interface Movie {
   id: number;
   trailerKey: string;
@@ -31,4 +33,6 @@ export interface Genres {
 export interface GenreContextInterface {
   genres: Genre[] | null;
   genresLoading: boolean;
+  selectedGenre: number;
+  setSelectedGenre: Dispatch<any>;
 }

@@ -19,3 +19,83 @@ export const modalStyles = {
     zIndex: "2",
   },
 };
+
+export const reactSelectStyles = {
+  singleValue: (provided: any) => ({
+    ...provided,
+    color: "white",
+  }),
+  indicatorSeparator: (provided: any) => ({
+    ...provided,
+    display: "none",
+  }),
+  control: (provided: any) => ({
+    ...provided,
+    cursor: "pointer",
+    borderWidth: "2px",
+    boxShadow: "none",
+    height: "45px",
+    borderRadius: "0px",
+    backgroundColor: "black",
+    border: "2px solid rgba(255,255,255,0.50)",
+
+    "&:hover": {
+      border: "2px solid rgba(255,255,255,1)",
+      /* boxShadow: "0 0 0 1px #4353ff", */
+    },
+    "&:focus-within": {
+      // borderColor: "#4353ff",
+      // borderColor: "transparent",
+      border: "2px solid rgba(255,255,255,1)",
+      /* boxShadow: "0 0 0 1px #4353ff", */
+    },
+  }),
+  container: (provided: any) => ({
+    ...provided,
+    width: "200px",
+    backgroundColor: "black",
+    color: "white",
+    // borderColor: "rgba(255,255,255,0.50)",
+    /* cursor: isDisabled && "not-allowed", */
+  }),
+  menu: (provided: any) => ({
+    ...provided,
+    borderRadius: 0,
+    zindex: "1000",
+    width: "500px",
+    padding: "15px",
+    backgroundColor: "black",
+    border: "1px solid rgba(255,255,255,0.50)",
+  }),
+  menuList: (provided: any) => ({
+    ...provided,
+    padding: "0px 0px",
+    display: "grid",
+    gridTemplateColumns: "repeat(3,1fr)",
+    backgroundColor: "black",
+  }),
+  input: (provided: any) => ({
+    ...provided,
+    padding: "5px 0 5px 0px",
+    color: "white",
+  }),
+  placeholder: (provided: any) => ({
+    ...provided,
+    color: "rgba(255,255,255,0.50)",
+  }),
+  option: (provided: any, state: any) => ({
+    ...provided,
+    color: "white",
+    backgroundColor: "transparent",
+    cursor: "pointer",
+    fontWeight: "semibold",
+    padding: "12px",
+    "&:active": {
+      backgroundColor: "transparent",
+    },
+
+    /* "&:hover": {
+      backgroundColor: !state.isSelected && "#eff6ff",
+    }, */
+  }),
+};
