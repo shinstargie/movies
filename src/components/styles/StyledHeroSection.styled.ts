@@ -3,7 +3,7 @@ import { BACKDROP_PATH } from "../../api";
 
 const StyledHeroSection = styled.div<{ bgImg: string | undefined }>`
   display: flex;
-  padding: 60px 10px;
+  padding: 50px;
   justify-content: center;
   align-items: end;
   height: 900px;

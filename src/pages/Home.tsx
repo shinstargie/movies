@@ -45,7 +45,13 @@ const Home: React.FC<Props> = ({}) => {
 
   async function getAction() {
     const data = await fetchMoviesWithGenre(28, 16);
-    setFeatured(data.results.shift());
+    // console.log((Math.random() * 20).toFixed());
+    // console.log(data.results.length);
+    const randomMovie: number = Number(
+      (Math.random() * data.results.length).toFixed()
+    );
+    setFeatured(data.results[randomMovie]);
+    // setFeatured(data.results.shift());
     setAction(data.results);
   }
 

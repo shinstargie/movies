@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledNavigation = styled.nav`
   display: flex;
-  padding: 25px 25px;
+  padding: 25px 50px;
   position: absolute;
   width: 100%;
   max-width: 100vw;

@@ -45,16 +45,27 @@ const Navigation: React.FC<Props> = ({}) => {
               display: "flex",
               alignItems: "center",
             }}
+            onClick={() => handleInputSearch("")}
           >
             <NavigationLink
-              onClick={() => handleInputSearch("")}
+              /* onClick={() => handleInputSearch("")} */
               to="/"
               text="Home"
             />
             <NavigationLink
-              to="/popular"
-              text="Popular"
-              onClick={() => handleInputSearch("")}
+              to="/trending"
+              text="Trending"
+              /* onClick={() => handleInputSearch("")} */
+            />
+            <NavigationLink
+              to="/top-rated"
+              text="Top Rated"
+              /* onClick={() => handleInputSearch("")} */
+            />
+            <NavigationLink
+              to="/upcoming"
+              text="Upcoming"
+              /* onClick={() => handleInputSearch("")} */
             />
             {genreOptions && (
               <Dropdown

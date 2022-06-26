@@ -18,7 +18,7 @@ const Popular: React.FC = () => {
 
   async function getMovies() {
     movieOptions.params.page = currentPage;
-    const data = await fetchMovies("discover/movie", movieOptions);
+    const data = await fetchMovies("trending/movie/day", movieOptions);
     setCurrentMovies(data.results);
   }
 

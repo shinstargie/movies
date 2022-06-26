@@ -10,7 +10,7 @@ const StyledMovieImage = styled.img`
   transition-duration: 100ms;
 
   &:hover {
-    transform: scale(1.04);
+    transform: scale(1.02);
   }
 `;
 

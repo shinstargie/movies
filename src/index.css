@@ -1,8 +1,10 @@
 /* swiper js style overrides */
 
+/* color: #b20600; */
+/* font-weight: 600; */
+
 .active-nav-link {
-  /* color: #b20600; */
-  font-weight: 700;
+  color: yellow;
 }
 
 .swiper {
@@ -119,6 +121,14 @@
   background-color: black;
   color: white;
   cursor: pointer;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+.Dropdown-arrow {
+  top: 20px;
 }
 
 .Dropdown-root {

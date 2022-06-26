@@ -32,6 +32,7 @@ const Search: React.FC<Props> = ({}) => {
     <>
       <Section>
         <Container>
+          <h2>Showing results for "{searchInput}"</h2>
           <PaginatedMovies
             data={searchData}
             onPageChange={onPageChange}

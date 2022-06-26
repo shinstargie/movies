@@ -11,6 +11,7 @@ import CustomModal from "./CustomModal";
 import { GenreContext } from "./../context/GenreContext";
 import toast from "react-hot-toast";
 import { fetchTrailer } from "../api";
+import { useHistory } from "react-router-dom";
 
 interface Props {
   data: Movie | null | undefined;
@@ -18,6 +19,7 @@ interface Props {
 }
 
 const Hero: React.FC<Props> = ({ data, loading }) => {
+  const history = useHistory();
   const [toggleModal, setToggleModal] = useState<boolean>(false);
   const [currentGenres, setCurrentGenres] = useState<Genre[] | null>(null);
   const [trailerLoading, setTrailerLoading] = useState<boolean>(true);
@@ -66,6 +68,9 @@ const Hero: React.FC<Props> = ({ data, loading }) => {
               <StyledHeroDescription>{data?.overview}</StyledHeroDescription>
               <StyledButton primary onClick={() => openModal(data)}>
                 Play Trailer
+              </StyledButton>
+              <StyledButton onClick={() => history.push("/genre/28")}>
+                Action Movies
               </StyledButton>
             </HeroContent>
           </HeroContainer>
