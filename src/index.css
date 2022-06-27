@@ -72,6 +72,7 @@
 }
 
 /* .swiper-btn, */
+
 .swiper-btn {
   z-index: 5000;
   padding: 5px 10px;
@@ -88,6 +89,26 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.85);
+}
+
+@media screen and (max-width: 768px) {
+  .swiper {
+    padding: 0px;
+  }
+
+  .swiper-btn {
+    display: none !important;
+  }
+
+  .swiper-button-prev,
+  .swiper-rtl .swiper-button-next {
+    display: none !important;
+  }
+
+  .swiper-button-next:after,
+  .swiper-rtl .swiper-button-prev:after {
+    display: none !important;
+  }
 }
 
 /* react pagination styles */

@@ -98,18 +98,19 @@ const PaginatedMovies: React.FC<Props> = ({
                 <div
                   style={{
                     position: "absolute",
-                    border: "1px solid rgba(255,255,255,0.40)",
-                    fontSize: "12px",
-                    lineHeight: "1",
+                    border: "2px solid rgba(255,240,0,0.50)",
+                    boxShadow: "0px 3px 8px rgba(0, 0, 0, 0.60)",
+                    color: "yellow",
+                    fontSize: "13px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    top: "-12px",
-                    right: "-12px",
-                    height: "34px",
-                    width: "34px",
+                    top: "-14px",
+                    right: "-14px",
+                    height: "40px",
+                    width: "40px",
                     borderRadius: "50%",
-                    backgroundColor: "black",
+                    backgroundColor: "#b20600",
                   }}
                 >
                   {movie.vote_average.toFixed(1)}

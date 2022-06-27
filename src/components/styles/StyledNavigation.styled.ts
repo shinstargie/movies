@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "./_breakpoints";
 
 const StyledNavigation = styled.nav`
   display: flex;
@@ -14,6 +15,10 @@ const StyledNavigation = styled.nav`
     rgba(0, 0, 0, 0.8),
     rgba(0, 0, 0, 1)
   );
+
+  @media ${device.tablet} {
+    display: none;
+  }
 `;
 
 export default StyledNavigation;

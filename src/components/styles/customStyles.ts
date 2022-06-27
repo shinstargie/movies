@@ -23,7 +23,7 @@ export const modalStyles = {
 export const reactSelectStyles = {
   singleValue: (provided: any) => ({
     ...provided,
-    color: "white",
+    color: "yellow",
   }),
   indicatorSeparator: (provided: any) => ({
     ...provided,
@@ -33,30 +33,23 @@ export const reactSelectStyles = {
     ...provided,
     cursor: "pointer",
     borderWidth: "2px",
-    boxShadow: "none",
     height: "45px",
     borderRadius: "0px",
     backgroundColor: "black",
     border: "2px solid rgba(255,255,255,0.50)",
-
+    boxShadow: "0px 5px 25px rgba(0, 0, 0, 1)",
     "&:hover": {
       border: "2px solid rgba(255,255,255,1)",
-      /* boxShadow: "0 0 0 1px #4353ff", */
     },
     "&:focus-within": {
-      // borderColor: "#4353ff",
-      // borderColor: "transparent",
       border: "2px solid rgba(255,255,255,1)",
-      /* boxShadow: "0 0 0 1px #4353ff", */
     },
   }),
   container: (provided: any) => ({
     ...provided,
-    width: "200px",
+    width: "205px",
     backgroundColor: "black",
     color: "white",
-    // borderColor: "rgba(255,255,255,0.50)",
-    /* cursor: isDisabled && "not-allowed", */
   }),
   menu: (provided: any) => ({
     ...provided,
@@ -65,7 +58,8 @@ export const reactSelectStyles = {
     width: "500px",
     padding: "15px",
     backgroundColor: "black",
-    border: "1px solid rgba(255,255,255,0.50)",
+    border: "2px solid rgba(255,255,255,0.50)",
+    boxShadow: "0px 5px 25px rgba(0, 0, 0, 1)",
   }),
   menuList: (provided: any) => ({
     ...provided,
@@ -85,7 +79,7 @@ export const reactSelectStyles = {
   }),
   option: (provided: any, state: any) => ({
     ...provided,
-    color: "white",
+    color: "rgb(255,255,255,0.60)",
     backgroundColor: "transparent",
     cursor: "pointer",
     fontWeight: "semibold",
@@ -93,9 +87,8 @@ export const reactSelectStyles = {
     "&:active": {
       backgroundColor: "transparent",
     },
-
-    /* "&:hover": {
-      backgroundColor: !state.isSelected && "#eff6ff",
-    }, */
+    "&:hover": {
+      color: "yellow",
+    },
   }),
 };

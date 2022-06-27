@@ -58,10 +58,7 @@ const Navigation: React.FC<Props> = ({}) => {
     option: SingleValue<GenreSelectOption> | null,
     actionMeta: ActionMeta<GenreSelectOption>
   ) {
-    console.log(option);
     setChosenGenreOption(option);
-    // console.log(actionMeta);
-    // if (!option && actionMeta.action === "clear") return;
     if (!option) return history.push(`/`);
     history.push(`/genre/${Number(option.value)}`);
   }
@@ -69,7 +66,6 @@ const Navigation: React.FC<Props> = ({}) => {
   function handleNavLinkClick() {
     handleInputSearch("");
     setChosenGenreOption(null);
-    // handleGenreChange(null);
   }
 
   return (

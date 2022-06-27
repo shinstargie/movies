@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { BACKDROP_PATH } from "../../api";
+import { device } from "./_breakpoints";
 
 const StyledHeroSection = styled.div<{ bgImg: string | undefined }>`
   display: flex;
@@ -16,6 +17,11 @@ const StyledHeroSection = styled.div<{ bgImg: string | undefined }>`
       rgba(0, 0, 0, 0.98)
     ),
     url(${(props) => BACKDROP_PATH + props.bgImg});
+
+  @media ${device.laptopL} {
+    height: 700px;
+    padding: 50px 25px;
+  }
 `;
 
 export default StyledHeroSection;

@@ -19,6 +19,7 @@ const GenreBased: React.FC = ({}) => {
   const [currentMovies, setCurrentMovies] = useState<Movie[] | null>(null);
   const [remountComponent, setRemountComponent] = useState(0);
   const [currentGenre, setCurrentGenre] = useState<string | undefined>("");
+  const [banner, setBanner] = useState<Movie | null>();
 
   useEffect(() => {
     getMoviesWithGenre();
@@ -45,6 +46,12 @@ const GenreBased: React.FC = ({}) => {
       movieWithGenreOptions
     );
 
+    const randomMovieForBanner: number = Number(
+      (Math.random() * data.results.length).toFixed()
+    );
+
+    console.log(data.results[randomMovieForBanner]);
+    setBanner(data.results[randomMovieForBanner]);
     setCurrentMovies(data.results);
   }
 
@@ -55,12 +62,26 @@ const GenreBased: React.FC = ({}) => {
 
   return (
     <>
+      {currentPage === 1 && (
+        <StyledBanner bgImg={banner?.backdrop_path}>
+          <div
+            style={{
+              maxWidth: "1440px",
+              margin: "0 auto",
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <h2 style={{ fontSize: "65px", color: "yellow" }}>
+              {currentGenre}
+            </h2>
+          </div>
+        </StyledBanner>
+      )}
+
       <Section>
         <Container>
-          <StyledBanner>
-            <h2>{currentGenre} Movies</h2>
-          </StyledBanner>
-
           <PaginatedMovies
             data={currentMovies}
             onPageChange={onPageChange}
