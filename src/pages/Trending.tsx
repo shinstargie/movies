@@ -5,6 +5,7 @@ import Container from "../components/Container";
 import { Movie } from "../components/_types";
 import { fetchMovies, movieOptions } from "../api";
 import PaginatedMovies from "../components/PaginatedMovies";
+import PageBanner from "../components/PageBanner";
 
 Modal.setAppElement("#root");
 
@@ -29,6 +30,12 @@ const Trending: React.FC = () => {
 
   return (
     <>
+      <PageBanner
+        title="Trending"
+        currentPage={currentPage}
+        currentMovies={currentMovies}
+      />
+
       <Section>
         <Container>
           <PaginatedMovies data={currentMovies} onPageChange={onPageChange} />

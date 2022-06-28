@@ -83,7 +83,7 @@ export const reactSelectStyles = {
     backgroundColor: "transparent",
     cursor: "pointer",
     fontWeight: "semibold",
-    padding: "12px",
+    padding: "10px",
     "&:active": {
       backgroundColor: "transparent",
     },

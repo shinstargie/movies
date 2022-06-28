@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMoviesWithGenre, movieWithGenreOptions } from "../api";
 import Section from "../components/Section";
-import StyledBanner from "../components/styles/StyledBanner";
+import StyledBannerSection from "../components/styles/StyledBannerSection";
 import { Movie } from "../components/_types";
 import Container from "./../components/Container";
 import PaginatedMovies from "./../components/PaginatedMovies";
@@ -63,7 +63,7 @@ const GenreBased: React.FC = ({}) => {
   return (
     <>
       {currentPage === 1 && (
-        <StyledBanner bgImg={banner?.backdrop_path}>
+        <StyledBannerSection bgImg={banner?.backdrop_path}>
           <div
             style={{
               maxWidth: "1440px",
@@ -73,11 +73,9 @@ const GenreBased: React.FC = ({}) => {
               alignItems: "center",
             }}
           >
-            <h2 style={{ fontSize: "65px", color: "yellow" }}>
-              {currentGenre}
-            </h2>
+            <h2 style={{ fontSize: "65px" }}>{currentGenre}</h2>
           </div>
-        </StyledBanner>
+        </StyledBannerSection>
       )}
 
       <Section>

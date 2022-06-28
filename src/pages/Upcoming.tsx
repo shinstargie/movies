@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { movieOptions, fetchMovies } from "../api";
 import Container from "../components/Container";
+import PageBanner from "../components/PageBanner";
 import PaginatedMovies from "../components/PaginatedMovies";
 import Section from "../components/Section";
 import { Movie } from "../components/_types";
@@ -28,6 +29,12 @@ const Upcoming: React.FC<Props> = ({}) => {
 
   return (
     <>
+      <PageBanner
+        title="Upcoming"
+        currentPage={currentPage}
+        currentMovies={currentMovies}
+      />
+
       <Section>
         <Container>
           <PaginatedMovies data={currentMovies} onPageChange={onPageChange} />

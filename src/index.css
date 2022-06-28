@@ -3,6 +3,10 @@
 /* color: #b20600; */
 /* font-weight: 600; */
 
+a:hover {
+  color: yellow;
+}
+
 .active-nav-link {
   color: yellow;
 }
@@ -132,6 +136,7 @@
 }
 
 .selected > a {
+  color: yellow;
   background-color: #b20600;
 }
 

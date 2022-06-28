@@ -8,6 +8,7 @@ import StyledMovieCardLoader from "./styles/StyledMovieCardLoader.styled";
 import { Genre, Movie } from "./_types";
 import { GenreContext } from "./../context/GenreContext";
 import CustomModal from "./CustomModal";
+import StyledMovieRating from "./styles/StyledMovieRating.styled";
 
 interface Props {
   data: Movie[] | null;
@@ -89,32 +90,14 @@ const PaginatedMovies: React.FC<Props> = ({
           {data?.map((movie: any) => (
             <div key={movie.id} style={{ position: "relative" }}>
               <MovieImage
-                /* key={movie.id} */
                 src={IMAGE_PATH + `${movie.poster_path}`}
                 alt={movie.title}
                 onClick={() => openModal(movie)}
               />
               {movie.vote_average !== 0 && (
-                <div
-                  style={{
-                    position: "absolute",
-                    border: "2px solid rgba(255,240,0,0.50)",
-                    boxShadow: "0px 3px 8px rgba(0, 0, 0, 0.60)",
-                    color: "yellow",
-                    fontSize: "13px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    top: "-14px",
-                    right: "-14px",
-                    height: "40px",
-                    width: "40px",
-                    borderRadius: "50%",
-                    backgroundColor: "#b20600",
-                  }}
-                >
+                <StyledMovieRating>
                   {movie.vote_average.toFixed(1)}
-                </div>
+                </StyledMovieRating>
               )}
             </div>
           ))}
