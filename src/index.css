@@ -19,13 +19,16 @@ a:hover {
 }
 
 .swiper-wrapper {
-  padding-bottom: 55px;
+  padding-top: 50px;
+  /* padding-bottom: 55px; */
 }
 
 .swiper-pagination {
   text-align: right !important;
   right: 60px !important;
   left: auto !important;
+  top: 2px;
+  height: 15px;
 }
 
 .swiper-pagination-bullet {
@@ -75,6 +78,11 @@ a:hover {
   left: auto;
 }
 
+.swiper-button-prev,
+.swiper-button-next {
+  display: none;
+}
+
 /* .swiper-btn, */
 
 .swiper-btn {
@@ -119,6 +127,7 @@ a:hover {
 
 .pagination {
   display: flex;
+  max-width: 1340px;
   align-items: center;
   justify-content: end;
   list-style-type: none;

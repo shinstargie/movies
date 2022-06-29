@@ -31,7 +31,7 @@ const TrailerModal: React.FC<Props> = ({ movie, loading, trailerGenres }) => {
 
         <div style={{ opacity: "100%" }}>
           <span style={{ marginRight: "20px" }}>
-            Relased: {movie.release_date}
+            Relase date: {movie.release_date}
           </span>
           Genres:{" "}
           {trailerGenres?.map((genre) => (

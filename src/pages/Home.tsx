@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useContext, FormEvent } from "react";
+import React, { useEffect, useState } from "react";
 import Section from "./../components/Section";
-import { fetchMoviesWithGenre, fetchSearchResults } from "../api";
+import { fetchMoviesWithGenre } from "../api";
 import { Movie } from "../components/_types";
 import GenrePreviewContainer from "./../components/GenrePreviewContainer";
 import GenrePreviewLoading from "../components/styles/GenrePreviewLoading.styled";
 import MovieContainer from "./../components/styles/MovieContainer.styled";
-import Container from "../components/Container";
 import Hero from "../components/Hero";
 
 interface Props {}
@@ -24,9 +23,10 @@ const Home: React.FC<Props> = ({}) => {
   const [horror, setHorror] = useState<Movie[] | null>(null);
 
   const [loading, setLoading] = useState<boolean>(true);
-  const loadingItems = [
+  /* const loadingItems = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-  ];
+  ]; */
+  const loadingItems = Array.from({ length: 20 }, (_, i) => i + 1);
   const [featured, setFeatured] = useState<Movie | null | undefined>(null);
 
   useEffect(() => {
@@ -154,29 +154,3 @@ const Home: React.FC<Props> = ({}) => {
 };
 
 export default Home;
-
-/* const randomMovie: number = Number(
-    (Math.random() * data.results.length).toFixed()
-  ); */
-
-{
-  /* <form onSubmit={handleSearchSubmit}>
-        <input
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </form> */
-}
-
-/* const [searchTerm, setSearchTerm] = useState("");
-
-  async function handleSearchSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = await fetchSearchResults(searchTerm);
-    console.log(data);
-  } */
-
-/* const timeout: ReturnType<typeof setTimeout> = setTimeout(async () => {
-      
-      setLoading(false);
-    }, 50000); */

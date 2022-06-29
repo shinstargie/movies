@@ -15,18 +15,9 @@ interface Props {}
 const Navigation: React.FC<Props> = ({}) => {
   const history = useHistory();
   const { searchInput, handleInputSearch } = useContext(SearchContext);
-  const { genres } = useContext(GenreContext);
+  const { genres, selectedGenre, setSelectedGenre } = useContext(GenreContext);
   const [genreOptions, setGenreOptions] = useState<
     { label: string; value: string }[] | undefined
-  >();
-
-  const [chosenGenreOption, setChosenGenreOption] = useState<
-    | {
-        label: string;
-        value: string;
-      }
-    | undefined
-    | null
   >();
 
   useEffect(() => {
@@ -39,15 +30,9 @@ const Navigation: React.FC<Props> = ({}) => {
 
   function handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>): any {
     const term = event.currentTarget.value;
+    if (term.length > 0) setSelectedGenre(null);
     if (term.length === 0) return history.push("/");
   }
-
-  /* interface GenreSelectProps {
-    option: { label: string; value: string } | null;
-    actionMeta: ActionMeta<{ label: string; value: string }>;
-  } */
-
-  // { option, actionMeta }: GenreSelectProps
 
   interface GenreSelectOption {
     value: string;
@@ -58,14 +43,14 @@ const Navigation: React.FC<Props> = ({}) => {
     option: SingleValue<GenreSelectOption> | null,
     actionMeta: ActionMeta<GenreSelectOption>
   ) {
-    setChosenGenreOption(option);
+    setSelectedGenre(option);
     if (!option) return history.push(`/`);
     history.push(`/genre/${Number(option.value)}`);
   }
 
   function handleNavLinkClick() {
     handleInputSearch("");
-    setChosenGenreOption(null);
+    setSelectedGenre(null);
   }
 
   return (
@@ -96,7 +81,7 @@ const Navigation: React.FC<Props> = ({}) => {
             />
             {genreOptions && (
               <Select
-                value={chosenGenreOption}
+                value={selectedGenre}
                 styles={reactSelectStyles}
                 placeholder="Genre"
                 options={genreOptions}
@@ -119,26 +104,3 @@ const Navigation: React.FC<Props> = ({}) => {
 };
 
 export default Navigation;
-
-/* onClick={() => {
-              handleInputSearch("");
-              handleGenreChange(null, { action: "clear" });
-              // if (!window.location.pathname.includes("upcoming")) return;
-              if (!window.location.pathname.includes("genre")) {
-                // setSelectedGenre(Math.random());
-                setChooseOption("");
-              }
-            }} */
-
-{
-  /* {genreOptions && (
-              <div key={selectedGenre}>
-                <Dropdown
-                  value={chooseOption}
-                  options={genreOptions}
-                  placeholder="Genres"
-                  onChange={routeToGenre}
-                />
-              </div>
-            )} */
-}

@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMoviesWithGenre, movieWithGenreOptions } from "../api";
+import PageBanner from "../components/PageBanner";
 import Section from "../components/Section";
-import StyledBannerSection from "../components/styles/StyledBannerSection";
 import { Movie } from "../components/_types";
 import Container from "./../components/Container";
 import PaginatedMovies from "./../components/PaginatedMovies";
@@ -13,13 +13,11 @@ interface ParamId {
 }
 
 const GenreBased: React.FC = ({}) => {
-  const { genres } = useContext(GenreContext);
+  const { genres, selectedGenre, setSelectedGenre } = useContext(GenreContext);
   const { id } = useParams<ParamId>();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [currentMovies, setCurrentMovies] = useState<Movie[] | null>(null);
   const [remountComponent, setRemountComponent] = useState(0);
-  const [currentGenre, setCurrentGenre] = useState<string | undefined>("");
-  const [banner, setBanner] = useState<Movie | null>();
 
   useEffect(() => {
     getMoviesWithGenre();
@@ -34,7 +32,7 @@ const GenreBased: React.FC = ({}) => {
   useEffect(() => {
     if (genres) {
       const genre = genres.find((genre) => genre.id === Number(id));
-      setCurrentGenre(genre?.name);
+      setSelectedGenre({ label: genre?.name, value: genre?.id });
     }
   }, [id]);
 
@@ -45,13 +43,6 @@ const GenreBased: React.FC = ({}) => {
       "",
       movieWithGenreOptions
     );
-
-    const randomMovieForBanner: number = Number(
-      (Math.random() * data.results.length).toFixed()
-    );
-
-    console.log(data.results[randomMovieForBanner]);
-    setBanner(data.results[randomMovieForBanner]);
     setCurrentMovies(data.results);
   }
 
@@ -62,23 +53,15 @@ const GenreBased: React.FC = ({}) => {
 
   return (
     <>
-      {currentPage === 1 && (
-        <StyledBannerSection bgImg={banner?.backdrop_path}>
-          <div
-            style={{
-              maxWidth: "1440px",
-              margin: "0 auto",
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <h2 style={{ fontSize: "65px" }}>{currentGenre}</h2>
-          </div>
-        </StyledBannerSection>
+      {selectedGenre && (
+        <PageBanner
+          title={selectedGenre?.label}
+          currentPage={currentPage}
+          currentMovies={currentMovies}
+        />
       )}
 
-      <Section>
+      <Section top={currentPage !== 1 && true}>
         <Container>
           <PaginatedMovies
             data={currentMovies}

@@ -11,6 +11,7 @@ import { SearchContextProvider } from "./context/SearchContext";
 import TopRated from "./pages/TopRated";
 import Upcoming from "./pages/Upcoming";
 import "./App.css";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const theme = {
@@ -27,6 +28,7 @@ function App() {
         <GlobalStyles />
         <Toaster position="top-right" />
         <Router>
+          <ScrollToTop />
           <SearchContextProvider>
             <Navigation />
             <Route path="/" exact component={Home} />

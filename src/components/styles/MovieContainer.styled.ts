@@ -4,7 +4,7 @@ import { device } from "./_breakpoints";
 const MovieContainer = styled.div`
   display: grid;
   min-height: 100vh;
-  max-width: 1440px;
+  max-width: 1340px;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 25px;
   margin-bottom: 40px;

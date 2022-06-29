@@ -15,6 +15,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { swiperBreakpoints } from "./styles/_breakpoints";
+import StyledMovieRating from "./styles/StyledMovieRating.styled";
 
 const SwiperButtonPrevious = ({ children }: any) => {
   const swiper = useSwiper();
@@ -126,6 +127,11 @@ const SwipeSlider: React.FC<Props> = ({ data, autoplay }) => {
                   alt={movie.title}
                   onClick={() => openModal(movie)}
                 />
+                {movie.vote_average !== 0 && (
+                  <StyledMovieRating>
+                    {movie.vote_average.toFixed(1)}
+                  </StyledMovieRating>
+                )}
               </SwiperSlide>
             ))}
         </Swiper>
@@ -135,25 +141,3 @@ const SwipeSlider: React.FC<Props> = ({ data, autoplay }) => {
 };
 
 export default SwipeSlider;
-
-/*
-const [pageLoading, setPageLoading] = useState<boolean>(true);
-   const [data, setData] = useState<Movie[] | null>(null);
-
-    useEffect(() => {
-    getMovies();
-    setLoading(false);
-  }, []);
-
-  async function getMovies() {
-    const { data } = await api.get("discover/movie", {
-      params: {
-        language: "en-US",
-        include_adult: false,
-        with_genres: 10752,
-        page: 1,
-      },
-    });
-
-    setData(data.results);
-  } */

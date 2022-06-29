@@ -2,8 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { GenreContextProvider } from "./context/GenreContext";
-import { SearchContextProvider } from "./context/SearchContext";
-
 import "./index.css";
 
 const root = ReactDOM.createRoot(
@@ -12,11 +10,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    {/* <SearchContextProvider> */}
     <GenreContextProvider>
       <App />
     </GenreContextProvider>
-    {/* </SearchContextProvider> */}
   </React.StrictMode>
 );
 

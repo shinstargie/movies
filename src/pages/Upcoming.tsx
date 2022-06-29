@@ -35,7 +35,7 @@ const Upcoming: React.FC<Props> = ({}) => {
         currentMovies={currentMovies}
       />
 
-      <Section>
+      <Section top={currentPage !== 1 && true}>
         <Container>
           <PaginatedMovies data={currentMovies} onPageChange={onPageChange} />
         </Container>

@@ -5,7 +5,7 @@ const StyledNavConainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 1440px;
+  max-width: 1340px;
   justify-content: space-between;
 `;
 

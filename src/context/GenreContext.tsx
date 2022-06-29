@@ -1,11 +1,11 @@
 import React, { createContext, useState, useEffect } from "react";
-import { fetchGenres } from "../api";
 import { GenreContextInterface, Genre } from "./../components/_types";
+import { fetchGenres } from "../api";
 
 export const GenreContext = createContext<GenreContextInterface>({
   genres: null,
   genresLoading: true,
-  selectedGenre: Math.random(),
+  selectedGenre: null,
   setSelectedGenre: () => {},
 });
 
@@ -40,5 +40,3 @@ export const GenreContextProvider: React.FC<Props> = ({ children }) => {
     </>
   );
 };
-
-// const { genres, genresLoading } = useContext(GenreContext);

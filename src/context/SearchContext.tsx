@@ -73,5 +73,3 @@ export const SearchContextProvider: React.FC<Props> = ({ children }) => {
     </>
   );
 };
-
-// const { genres, genresLoading } = useContext(GenreContext);

@@ -7,5 +7,3 @@ const GenrePreviewLoading = styled.div`
 `;
 
 export default GenrePreviewLoading;
-
-/* background-color: rgb(255, 255, 255, 0.15); */

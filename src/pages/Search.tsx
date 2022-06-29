@@ -1,7 +1,6 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import Container from "../components/Container";
 import Section from "../components/Section";
-import { Movie } from "../components/_types";
 import { SearchContext } from "../context/SearchContext";
 import PaginatedMovies from "./../components/PaginatedMovies";
 
@@ -15,23 +14,15 @@ const Search: React.FC<Props> = ({}) => {
     searchPageCount,
     setCurrentSearchPage,
   } = useContext(SearchContext);
-  const [currentMovies, setCurrentMovies] = useState<Movie[] | null>(null);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-
-  /* useEffect(() => { */
-  /*   setCurrentMovies searchData;*/
-  /* }, [currentPage]); */
 
   function onPageChange(event: { selected: number }) {
-    setCurrentMovies(null);
     setCurrentSearchPage(event.selected + 1);
-    // setCurrentPage(event.selected + 1);
   }
 
   return (
     <>
       <Section>
-        <Container>
+        <Container med={true}>
           <h2>Showing results for "{searchInput}"</h2>
           <PaginatedMovies
             data={searchData}

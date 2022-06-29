@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import Container from "./Container";
 import SwipeSlider from "./SwipeSlider";
 import { Movie } from "./_types";
-import MovieContainer from "./styles/MovieContainer.styled";
-import GenrePreviewLoading from "./styles/GenrePreviewLoading.styled";
+import StyledH2 from "./styles/StyledH2.styled";
+import StyledGenreHeaderWrap from "./styles/StyledGenreHeaderWrap.styled";
+import StyledTextLink from "./styles/StyledTextLink.styled";
 
 interface Props {
   data: Movie[] | null;
@@ -13,11 +13,14 @@ interface Props {
   autoplay?: boolean;
 }
 
-const headerStyles = {
-  width: "100%",
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
+const textLink = {
+  display: "inline-block",
+  marginBottom: "1px",
+  marginLeft: "10px",
+  color: "yellow",
+  "&:hover": {
+    color: "#b20600 !important",
+  },
 };
 
 const GenrePreviewContainer: React.FC<Props> = ({
@@ -29,10 +32,12 @@ const GenrePreviewContainer: React.FC<Props> = ({
   return (
     <>
       <Container>
-        <div style={headerStyles}>
-          <h2>{title}</h2>
-          <Link to={`/genre/${id}`}>View more</Link>
-        </div>
+        <StyledGenreHeaderWrap>
+          <StyledH2>{title}</StyledH2>
+          <StyledTextLink style={textLink} to={`/genre/${id}`}>
+            See more {">"}
+          </StyledTextLink>
+        </StyledGenreHeaderWrap>
         <SwipeSlider data={data} autoplay={autoplay} />
       </Container>
     </>

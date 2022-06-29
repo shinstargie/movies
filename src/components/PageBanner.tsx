@@ -11,15 +11,10 @@ interface Props {
 }
 
 const PageBanner: React.FC<Props> = ({ title, currentPage, currentMovies }) => {
-  const randomBg: number | null =
-    currentMovies && Number((Math.random() * currentMovies?.length).toFixed());
-
   return (
     <>
       {currentPage === 1 && currentMovies && (
-        <StyledBannerSection
-          bgImg={currentMovies[randomBg ? randomBg : 0].backdrop_path}
-        >
+        <StyledBannerSection bgImg={currentMovies[0].backdrop_path}>
           <StyledBannerContainer>
             <StyledPageTitle>{title}</StyledPageTitle>
           </StyledBannerContainer>

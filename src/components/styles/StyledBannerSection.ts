@@ -4,12 +4,9 @@ import { BACKDROP_PATH } from "../../api";
 const BG_PATH = "https://image.tmdb.org/t/p/w1280";
 
 const StyledBannerSection = styled.div<{ bgImg: string | undefined }>`
-  /* border: 20px solid rgba(255, 255, 255, 0.1); */
-  border-right: none;
-  border-left: none;
   margin-top: 130px;
   padding: 0px 50px;
-  height: 250px;
+  height: 300px;
   background-size: cover;
   background-position: center;
   background-image: linear-gradient(

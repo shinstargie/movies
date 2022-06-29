@@ -3,9 +3,6 @@ import { movieOptions, fetchMovies } from "../api";
 import Container from "../components/Container";
 import PaginatedMovies from "../components/PaginatedMovies";
 import Section from "../components/Section";
-import StyledBannerContainer from "../components/styles/StyledBannerContainer.styled";
-import StyledBannerSection from "../components/styles/StyledBannerSection";
-import StyledPageTitle from "../components/styles/StyledPageTitle.styled";
 import { Movie } from "../components/_types";
 import PageBanner from "./../components/PageBanner";
 
@@ -38,10 +35,8 @@ const TopRated: React.FC<Props> = ({}) => {
         currentMovies={currentMovies}
       />
 
-      <Section>
-        <Container>
-          <PaginatedMovies data={currentMovies} onPageChange={onPageChange} />
-        </Container>
+      <Section top={currentPage !== 1 && true}>
+        <PaginatedMovies data={currentMovies} onPageChange={onPageChange} />
       </Section>
     </>
   );

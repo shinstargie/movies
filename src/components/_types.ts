@@ -1,11 +1,12 @@
 import { Dispatch } from "react";
+import { SingleValue } from "react-select";
 
 export interface Movie {
   id: number;
   trailerKey: string;
   title: string;
   overview: string;
-  vote: number;
+  vote_average: number;
   poster_path: string;
   trailer: {
     key: string;
@@ -30,9 +31,14 @@ export interface Genres {
   genres: Genre[];
 }
 
+interface GenreSelectOption {
+  value: string;
+  label: string;
+}
+
 export interface GenreContextInterface {
   genres: Genre[] | null;
   genresLoading: boolean;
-  selectedGenre: number;
+  selectedGenre: SingleValue<GenreSelectOption> | null;
   setSelectedGenre: Dispatch<any>;
 }
