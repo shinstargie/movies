@@ -4,7 +4,7 @@ import { device } from "./_breakpoints";
 
 const StyledHeroSection = styled.div<{ bgImg: string | undefined }>`
   display: flex;
-  padding: 50px;
+  padding: 50px 25px 0px;
   justify-content: center;
   align-items: end;
   height: 900px;
@@ -18,9 +18,9 @@ const StyledHeroSection = styled.div<{ bgImg: string | undefined }>`
     ),
     url(${(props) => BACKDROP_PATH + props.bgImg});
 
-  @media ${device.laptopL} {
+  @media ${device.laptop} {
     height: 700px;
-    padding: 50px 25px;
+    padding: 50px 25px 0px;
   }
 `;
 

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "./_breakpoints";
 
 const StyledGenreHeaderWrap = styled.div`
   display: inline-block;
@@ -6,6 +7,10 @@ const StyledGenreHeaderWrap = styled.div`
   bottom: -40px;
   z-index: 2;
   margin-left: 50px;
+
+  @media ${device.laptopL} {
+    margin-left: 0px;
+  }
 `;
 
 export default StyledGenreHeaderWrap;

@@ -16,6 +16,10 @@ const StyledNavigation = styled.nav`
     rgba(0, 0, 0, 1)
   );
 
+  @media ${device.laptop} {
+    padding: 25px 25px;
+  }
+
   @media ${device.tablet} {
     display: none;
   }

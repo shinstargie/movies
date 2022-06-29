@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { BACKDROP_PATH } from "../../api";
+import { device } from "./_breakpoints";
 
 const BG_PATH = "https://image.tmdb.org/t/p/w1280";
 
@@ -15,6 +16,14 @@ const StyledBannerSection = styled.div<{ bgImg: string | undefined }>`
       rgba(0, 0, 0, 0.7)
     ),
     url(${(props) => BG_PATH + props.bgImg});
+
+  @media ${device.laptopL} {
+    height: 250px;
+  }
+
+  @media ${device.laptop} {
+    height: 200px;
+  }
 `;
 
 export default StyledBannerSection;

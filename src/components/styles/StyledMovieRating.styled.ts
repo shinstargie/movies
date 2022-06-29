@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "./_breakpoints";
 
 const StyledMovieRating = styled.div`
   position: absolute;
@@ -15,6 +16,14 @@ const StyledMovieRating = styled.div`
   width: 40px;
   border-radius: 50%;
   background-color: #b20600;
+
+  @media ${device.laptop} {
+    font-size: 12px;
+    top: -10px;
+    right: -10px;
+    height: 33px;
+    width: 33px;
+  }
 `;
 
 export default StyledMovieRating;

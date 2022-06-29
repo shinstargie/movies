@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "./_breakpoints";
 
 const StyledNavigationLink = styled.div`
   display: inline-block;
@@ -7,6 +8,11 @@ const StyledNavigationLink = styled.div`
   background-color: transparent;
   border: none;
   margin-right: 20px;
+
+  @media ${device.laptop} {
+    font-size: 15px;
+    margin-right: 15px;
+  }
 `;
 
 export default StyledNavigationLink;

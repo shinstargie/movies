@@ -40,7 +40,7 @@ export const swiperBreakpoints = {
   },
   768: {
     width: 768,
-    slidesPerView: 2,
+    slidesPerView: 3,
   },
   1024: {
     width: 1024,

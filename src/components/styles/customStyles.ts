@@ -37,7 +37,7 @@ export const reactSelectStyles = {
     borderRadius: "0px",
     backgroundColor: "black",
     border: "2px solid rgba(255,255,255,0.50)",
-    boxShadow: "0px 5px 25px rgba(0, 0, 0, 1)",
+    boxShadow: "0px 5px 25px rgba(0, 0, 0, 0.75)",
     "&:hover": {
       border: "2px solid rgba(255,255,255,1)",
     },
@@ -50,6 +50,9 @@ export const reactSelectStyles = {
     width: "205px",
     backgroundColor: "black",
     color: "white",
+    "@media screen and (max-width: 1024px)": {
+      width: "175px",
+    },
   }),
   menu: (provided: any) => ({
     ...provided,
@@ -59,7 +62,14 @@ export const reactSelectStyles = {
     padding: "15px",
     backgroundColor: "black",
     border: "2px solid rgba(255,255,255,0.50)",
-    boxShadow: "0px 5px 25px rgba(0, 0, 0, 1)",
+    boxShadow: "0px 5px 25px rgba(0, 0, 0, 0.75)",
+    transition: "border-color 150ms ease-in",
+    "&:hover": {
+      border: "2px solid rgba(255,255,255,1)",
+    },
+    "@media screen and (max-width: 1024px)": {
+      width: "425px",
+    },
   }),
   menuList: (provided: any) => ({
     ...provided,
