@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "./_breakpoints";
 
 const StyledButton = styled.button<{ primary?: boolean }>`
   padding: 15px 20px;
@@ -14,6 +15,17 @@ const StyledButton = styled.button<{ primary?: boolean }>`
 
   &:active {
     transform: scale(0.99);
+  }
+
+  @media ${device.laptop} {
+    font-size: 16px;
+    padding: 12px 26px;
+    margin-right: 15px;
+  }
+
+  @media ${device.mobileM} {
+    font-size: 12px;
+    padding: 12px 16px;
   }
 `;
 

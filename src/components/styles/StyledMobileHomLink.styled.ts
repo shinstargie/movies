@@ -7,7 +7,7 @@ const StyledMobileHomLink = styled(Link)`
 
   @media ${device.tablet} {
     display: inline-block;
-    margin-right: 20px;
+    margin-right: 25px;
 
     /* &:active {
       color: yellow;

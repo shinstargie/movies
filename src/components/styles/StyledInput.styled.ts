@@ -24,8 +24,9 @@ const StyledInput = styled.input<{ mobileMenu?: boolean }>`
   }
 
   @media ${device.tablet} {
-    /*  display: ${({ mobileMenu }) => (mobileMenu ? "block" : "none")}; */
+    /* display: ${({ mobileMenu }) => (mobileMenu ? "block" : "none")}; */
     width: 100%;
+    flex-shrink: 1;
     margin-right: 25px;
   }
 `;

@@ -31,7 +31,7 @@ const TrailerModal: React.FC<Props> = ({ movie, loading, trailerGenres }) => {
           <Trailer trailer={movie} />
         </StyledRelativeDiv>
 
-        <StyledRelativeDiv>
+        <StyledRelativeDiv isHidden={true}>
           <StyledSpan margin="15px 20px 0px 0px">
             Relase date: {movie.release_date}
           </StyledSpan>

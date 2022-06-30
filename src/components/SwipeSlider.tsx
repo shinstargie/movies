@@ -82,9 +82,16 @@ const SwipeSlider: React.FC<Props> = ({ data, autoplay }) => {
     setCurrentMovie(movie);
     setToggleModal(!toggleModal);
 
+    document.body.style.overflow = "hidden";
+
     const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
       setLoading(false);
     }, 1200);
+  }
+
+  function closeModal() {
+    document.body.style.overflow = "auto";
+    setToggleModal(!toggleModal);
   }
 
   return (
@@ -93,7 +100,8 @@ const SwipeSlider: React.FC<Props> = ({ data, autoplay }) => {
         <Modal
           style={modalStyles}
           isOpen={toggleModal}
-          onRequestClose={() => setToggleModal(!toggleModal)}
+          onRequestClose={closeModal}
+          /* onRequestClose={() => setToggleModal(!toggleModal)} */
         >
           {currentMovie && (
             <TrailerModal

@@ -9,6 +9,7 @@ import { Genre, Movie } from "./_types";
 import { GenreContext } from "./../context/GenreContext";
 import CustomModal from "./CustomModal";
 import StyledMovieRating from "./styles/StyledMovieRating.styled";
+import StyledNoResults from "./styles/StyledNoResults.styled";
 
 interface Props {
   data: Movie[] | null;
@@ -27,7 +28,7 @@ const rerenderWrapperStyles = {
 const PaginatedMovies: React.FC<Props> = ({
   data,
   onPageChange,
-  totalPages: totalpages,
+  totalPages,
   resetPage,
 }) => {
   const loadingItems = [
@@ -62,9 +63,21 @@ const PaginatedMovies: React.FC<Props> = ({
     setCurrentMovie(movie);
     setToggleModal(!toggleModal);
 
+    document.body.style.overflow = "hidden";
+
     const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
       setLoading(false);
     }, 1200);
+  }
+
+  function closeModal() {
+    document.body.style.overflow = "visible";
+    setToggleModal(!toggleModal);
+  }
+
+  function getPageCount() {
+    if (data?.length === 0 || totalPages === 1) return 0;
+    return totalPages ? totalPages : pageLimitSetByApi;
   }
 
   return (
@@ -72,10 +85,15 @@ const PaginatedMovies: React.FC<Props> = ({
       <CustomModal
         loading={loading}
         toggleModal={toggleModal}
-        closeModal={() => setToggleModal(!toggleModal)}
+        /* closeModal={() => setToggleModal(!toggleModal)} */
+        closeModal={closeModal}
         movie={currentMovie}
         matchedGenres={currentGenres}
       />
+
+      {data?.length === 0 && (
+        <StyledNoResults>No results found</StyledNoResults>
+      )}
 
       <MovieContainer>
         {!data &&
@@ -107,7 +125,8 @@ const PaginatedMovies: React.FC<Props> = ({
           onPageChange={onPageChange}
           pageRangeDisplayed={5}
           /* pageCount={discoverRoutePageCountLimit} */
-          pageCount={totalpages ? totalpages : pageLimitSetByApi}
+          /* pageCount={totalpages ? totalpages : pageLimitSetByApi} */
+          pageCount={getPageCount()}
           renderOnZeroPageCount={() => null}
           containerClassName="pagination"
           pageLinkClassName="page-num"

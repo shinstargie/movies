@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import Container from "../components/Container";
 import Section from "../components/Section";
+import StyledNoResults from "../components/styles/StyledNoResults.styled";
 import { SearchContext } from "../context/SearchContext";
 import PaginatedMovies from "./../components/PaginatedMovies";
+import StyledH2Title from "./../components/styles/StyledH2.styled";
 
 interface Props {}
 
@@ -23,7 +25,10 @@ const Search: React.FC<Props> = ({}) => {
     <>
       <Section top={true}>
         <Container med={true}>
-          <h2>Showing results for "{searchInput}"</h2>
+          <StyledH2Title extraMargin="40px">
+            Showing results for "{searchInput}"
+          </StyledH2Title>
+
           <PaginatedMovies
             data={searchData}
             onPageChange={onPageChange}

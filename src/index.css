@@ -160,6 +160,7 @@ a:hover {
 
 .pagination {
   display: flex;
+  flex-wrap: wrap;
   max-width: 1340px;
   align-items: center;
   justify-content: end;
@@ -169,6 +170,7 @@ a:hover {
 }
 
 .pagination > li > a {
+  display: inline-block;
   padding: 15px;
   border: 1px solid rgba(255, 255, 255, 0.25);
 }

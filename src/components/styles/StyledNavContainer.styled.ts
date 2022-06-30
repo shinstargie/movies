@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { device } from "./_breakpoints";
 
-const StyledNavConainer = styled.div<{ menuOpen: boolean }>`
+const StyledNavConainer = styled.div`
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -10,17 +10,20 @@ const StyledNavConainer = styled.div<{ menuOpen: boolean }>`
   justify-content: space-between;
 
   @media ${device.tablet} {
-    display: ${({ menuOpen }) => (menuOpen ? "flex" : "none")};
-    justify-content: start;
+    /*  */
+    justify-content: space-around;
     flex-direction: column;
-    position: fixed;
+    /* position: fixed;
     padding: 60px;
+    height: 100vh;
     top: 0;
     left: 0;
-    right: 0;
+    right: 0; 
     background-color: black;
-    height: 100vh;
+    */
   }
 `;
 
 export default StyledNavConainer;
+
+/* display: ${({ menuOpen }) => (menuOpen ? "flex" : "none")}; */

@@ -50,7 +50,10 @@ const Navigation: React.FC<Props> = ({}) => {
     actionMeta: ActionMeta<GenreSelectOption>
   ) {
     setSelectedGenre(option);
-    if (!option) return history.push(`/`);
+    if (!option) {
+      if (tabletBreakpoint) setToggleMobileMenu(!toggleMobileMenu);
+      return history.push(`/`);
+    }
     history.push(`/genre/${Number(option.value)}`);
     if (tabletBreakpoint) setToggleMobileMenu(!toggleMobileMenu);
   }
@@ -60,26 +63,31 @@ const Navigation: React.FC<Props> = ({}) => {
     setSelectedGenre(null);
   }
 
+  function handleSingleNavLinkClick() {
+    handleNavLinkClick();
+    if (tabletBreakpoint) setToggleMobileMenu(!toggleMobileMenu);
+  }
+
   const navLinks = [
     {
       to: "/",
       text: "Home",
-      onClick: handleNavLinkClick,
+      onClick: handleSingleNavLinkClick,
     },
     {
       to: "/trending",
       text: "Trending",
-      onClick: handleNavLinkClick,
+      onClick: handleSingleNavLinkClick,
     },
     {
       to: "/top-rated",
       text: "Top Rated",
-      onClick: handleNavLinkClick,
+      onClick: handleSingleNavLinkClick,
     },
     {
       to: "/upcoming",
       text: "Upcoming",
-      onClick: handleNavLinkClick,
+      onClick: handleSingleNavLinkClick,
     },
   ];
 
@@ -90,8 +98,8 @@ const Navigation: React.FC<Props> = ({}) => {
           Home
         </StyledMobileHomLink>
 
-        <StyledNavConainer menuOpen={toggleMobileMenu}>
-          <StyledNavMenu>
+        <StyledNavConainer>
+          <StyledNavMenu menuOpen={toggleMobileMenu}>
             {navLinks.map((link) => (
               <NavigationLink
                 key={link.to}
@@ -114,13 +122,15 @@ const Navigation: React.FC<Props> = ({}) => {
               />
             )}
           </StyledNavMenu>
+
+          <StyledInput
+            placeholder="Find a movie..."
+            value={searchInput}
+            onKeyUp={(e) => handleKeyPress(e)}
+            onChange={(e) => handleInputSearch(e.currentTarget.value)}
+          />
         </StyledNavConainer>
-        <StyledInput
-          placeholder="Find a movie..."
-          value={searchInput}
-          onKeyUp={(e) => handleKeyPress(e)}
-          onChange={(e) => handleInputSearch(e.currentTarget.value)}
-        />
+
         <StyledMobileMenuIcon
           onClick={() => setToggleMobileMenu(!toggleMobileMenu)}
           src={

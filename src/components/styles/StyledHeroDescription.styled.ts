@@ -9,6 +9,10 @@ const StyledHeroDescription = styled.p`
   @media ${device.laptop} {
     font-size: 18px;
   }
+
+  @media ${device.tablet} {
+    font-size: 14px;
+  }
 `;
 
 export default StyledHeroDescription;

@@ -10,6 +10,10 @@ const StyledHeroTitle = styled.h1`
   @media ${device.laptop} {
     font-size: 50px;
   }
+
+  @media ${device.tablet} {
+    font-size: 40px;
+  }
 `;
 
 export default StyledHeroTitle;
