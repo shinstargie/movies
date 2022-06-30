@@ -27,11 +27,14 @@ const CustomModal: React.FC<Props> = ({
         onRequestClose={closeModal}
       >
         {movie && (
-          <TrailerModal
-            movie={movie}
-            loading={loading}
-            trailerGenres={matchedGenres}
-          />
+          <>
+            <TrailerModal
+              movie={movie}
+              loading={loading}
+              trailerGenres={matchedGenres}
+              closeModal={closeModal}
+            />
+          </>
         )}
       </Modal>
     </>

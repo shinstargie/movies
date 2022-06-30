@@ -43,9 +43,16 @@ const Hero: React.FC<Props> = ({ data, loading }) => {
     matchGenres(movie);
     setToggleModal(!toggleModal);
 
+    document.body.style.overflow = "hidden";
+
     const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
       setTrailerLoading(false);
     }, 1200);
+  }
+
+  function closeModal() {
+    document.body.style.overflow = "auto";
+    setToggleModal(!toggleModal);
   }
 
   return (
@@ -55,7 +62,8 @@ const Hero: React.FC<Props> = ({ data, loading }) => {
       <CustomModal
         loading={trailerLoading}
         toggleModal={toggleModal}
-        closeModal={() => setToggleModal(!toggleModal)}
+        /* closeModal={() => setToggleModal(!toggleModal)} */
+        closeModal={closeModal}
         movie={data}
         matchedGenres={currentGenres}
       />

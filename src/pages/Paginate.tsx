@@ -83,6 +83,11 @@ const Paginate: React.FC<Props> = ({}) => {
     setCurrentPage(event.selected + 1);
   };
 
+  function closeModal() {
+    document.body.style.overflow = "auto";
+    setToggleModal(!toggleModal);
+  }
+
   return (
     <>
       <Section>
@@ -96,6 +101,7 @@ const Paginate: React.FC<Props> = ({}) => {
               movie={currentMovie}
               loading={loading}
               trailerGenres={currentGenres}
+              closeModal={closeModal}
             />
           )}
         </Modal>

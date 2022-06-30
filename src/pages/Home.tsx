@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import Section from "./../components/Section";
 import { fetchMoviesWithGenre } from "../api";
 import { Movie } from "../components/_types";
+import Hero from "../components/Hero";
 import GenrePreviewContainer from "./../components/GenrePreviewContainer";
 import GenrePreviewLoading from "../components/styles/GenrePreviewLoading.styled";
 import MovieContainer from "./../components/styles/MovieContainer.styled";
-import Hero from "../components/Hero";
 
-interface Props {}
-
-const Home: React.FC<Props> = ({}) => {
+const Home: React.FC = () => {
   const [action, setAction] = useState<Movie[] | null>(null);
   const [adventure, setAdventure] = useState<Movie[] | null>(null);
   const [animation, setAnimation] = useState<Movie[] | null>(null);
@@ -23,9 +21,6 @@ const Home: React.FC<Props> = ({}) => {
   const [horror, setHorror] = useState<Movie[] | null>(null);
 
   const [loading, setLoading] = useState<boolean>(true);
-  /* const loadingItems = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-  ]; */
   const loadingItems = Array.from({ length: 20 }, (_, i) => i + 1);
   const [featured, setFeatured] = useState<Movie | null | undefined>(null);
 
@@ -154,3 +149,9 @@ const Home: React.FC<Props> = ({}) => {
 };
 
 export default Home;
+
+/* const randomMovie: number = Number(
+      (Math.random() * movie.length).toFixed()
+    );
+    const selectMovie = movie[randomMovie]; */
+// setFeatured(selectMovie);

@@ -9,18 +9,32 @@ import Container from "./Container";
 import StyledRelativeDiv from "./styles/StyledRelativeDiv.styled";
 import ModalMetaInfoWrap from "./styles/ModalMetaInfoWrap.styled";
 import StyledSpan from "./styles/StyledSpan.styled";
+import StyledButton from "./styles/StyledButton";
+import StyledTrailerHeader from "./styles/StyledTrailerHeader.styled";
 
 interface Props {
   movie: Movie;
   loading: boolean;
   trailerGenres: Genre[] | null;
+  closeModal: () => void;
 }
 
-const TrailerModal: React.FC<Props> = ({ movie, loading, trailerGenres }) => {
+const TrailerModal: React.FC<Props> = ({
+  movie,
+  loading,
+  trailerGenres,
+  closeModal,
+}) => {
   return (
     <Section>
       <Container>
-        <ModalTitle text={movie.title} />
+        <StyledTrailerHeader>
+          <ModalTitle text={movie.title} />
+          <StyledButton primary noSpace onClick={closeModal}>
+            Close Trailer
+          </StyledButton>
+        </StyledTrailerHeader>
+
         <StyledRelativeDiv>
           {loading && (
             <TrailerLoading>

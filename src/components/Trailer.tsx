@@ -10,6 +10,7 @@ const Trailer: React.FC<Props> = ({ trailer }) => {
   return (
     <Youtube
       videoId={trailer.trailerKey}
+      iframeClassName="youtube-player"
       opts={{
         width: "100%",
         height: "650px",

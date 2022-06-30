@@ -4,7 +4,7 @@ import { device } from "./_breakpoints";
 
 const StyledHeroSection = styled.div<{ bgImg: string | undefined }>`
   display: flex;
-  padding: 50px 25px 0px;
+  padding: 50px 15px;
   justify-content: center;
   align-items: end;
   height: 900px;
@@ -20,7 +20,7 @@ const StyledHeroSection = styled.div<{ bgImg: string | undefined }>`
 
   @media ${device.laptop} {
     height: 700px;
-    padding: 50px 25px 0px;
+    padding: 50px 15px;
   }
 `;
 

@@ -108,6 +108,7 @@ const SwipeSlider: React.FC<Props> = ({ data, autoplay }) => {
               movie={currentMovie}
               loading={loading}
               trailerGenres={currentGenres}
+              closeModal={closeModal}
             />
           )}
         </Modal>

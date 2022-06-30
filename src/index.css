@@ -158,6 +158,12 @@ a:hover {
 
 /* react pagination styles */
 
+@media screen and (max-width: 425px) {
+  .youtube-player {
+    max-height: 500px;
+  }
+}
+
 .pagination {
   display: flex;
   flex-wrap: wrap;
