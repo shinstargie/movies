@@ -10,7 +10,7 @@ const StyledSection = styled.section<{ top: boolean | undefined }>`
   }
 
   @media ${device.laptop} {
-    padding: ${({ top }) => (top ? "150px 25px" : "25px 25px")};
+    padding: ${({ top }) => (top ? "100px 25px" : "25px 25px")};
   }
 `;
 

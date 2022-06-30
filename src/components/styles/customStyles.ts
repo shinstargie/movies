@@ -44,6 +44,10 @@ export const reactSelectStyles = {
     "&:focus-within": {
       border: "2px solid rgba(255,255,255,1)",
     },
+    "@media screen and (max-width: 768px)": {
+      fontSize: "22px",
+      height: "50px",
+    },
   }),
   container: (provided: any) => ({
     ...provided,
@@ -52,6 +56,9 @@ export const reactSelectStyles = {
     color: "white",
     "@media screen and (max-width: 1024px)": {
       width: "175px",
+    },
+    "@media screen and (max-width: 768px)": {
+      width: "100%",
     },
   }),
   menu: (provided: any) => ({
@@ -70,6 +77,11 @@ export const reactSelectStyles = {
     "@media screen and (max-width: 1024px)": {
       width: "425px",
     },
+    "@media screen and (max-width: 768px)": {
+      position: "relative",
+      top: "0",
+      width: "100%",
+    },
   }),
   menuList: (provided: any) => ({
     ...provided,
@@ -77,6 +89,14 @@ export const reactSelectStyles = {
     display: "grid",
     gridTemplateColumns: "repeat(3,1fr)",
     backgroundColor: "black",
+    "@media screen and (max-width: 768px)": {
+      gridTemplateColumns: "repeat(2,1fr)",
+      maxHeight: "none",
+    },
+    "@media screen and (max-width: 375px)": {
+      gridTemplateColumns: "repeat(1,1fr)",
+      maxHeight: "none",
+    },
   }),
   input: (provided: any) => ({
     ...provided,

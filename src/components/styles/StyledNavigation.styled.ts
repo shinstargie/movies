@@ -5,11 +5,11 @@ const StyledNavigation = styled.nav`
   display: flex;
   padding: 25px 50px;
   position: absolute;
+  top: 0;
   width: 100%;
   max-width: 100vw;
-  top: 0;
   z-index: 2;
-  background-image: linear-gradient(
+  background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0),
     rgba(0, 0, 0, 0.5),
@@ -21,8 +21,19 @@ const StyledNavigation = styled.nav`
   }
 
   @media ${device.tablet} {
-    display: none;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    justify-content: end;
+    z-index: 5000;
   }
 `;
 
 export default StyledNavigation;
+
+/* background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 1)
+  ); */

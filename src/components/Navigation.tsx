@@ -9,13 +9,19 @@ import "react-dropdown/style.css";
 import { GenreContext } from "./../context/GenreContext";
 import Select, { ActionMeta, SingleValue } from "react-select";
 import { reactSelectStyles } from "../components/styles/customStyles";
+import StyledNavMenu from "./styles/StyledNavMenu.styled";
+import StyledMobileMenuIcon from "./styles/StyledMobileMenuIcon.styled";
+import StyledTextLink from "./styles/StyledTextLink.styled";
+import StyledMobileHomLink from "./styles/StyledMobileHomLink.styled";
 
 interface Props {}
 
 const Navigation: React.FC<Props> = ({}) => {
+  const tabletBreakpoint = window.innerWidth <= 768;
   const history = useHistory();
   const { searchInput, handleInputSearch } = useContext(SearchContext);
   const { genres, selectedGenre, setSelectedGenre } = useContext(GenreContext);
+  const [toggleMobileMenu, setToggleMobileMenu] = useState<boolean>(false);
   const [genreOptions, setGenreOptions] = useState<
     { label: string; value: string }[] | undefined
   >();
@@ -46,6 +52,7 @@ const Navigation: React.FC<Props> = ({}) => {
     setSelectedGenre(option);
     if (!option) return history.push(`/`);
     history.push(`/genre/${Number(option.value)}`);
+    if (tabletBreakpoint) setToggleMobileMenu(!toggleMobileMenu);
   }
 
   function handleNavLinkClick() {
@@ -53,17 +60,99 @@ const Navigation: React.FC<Props> = ({}) => {
     setSelectedGenre(null);
   }
 
+  const navLinks = [
+    {
+      to: "/",
+      text: "Home",
+      onClick: handleNavLinkClick,
+    },
+    {
+      to: "/trending",
+      text: "Trending",
+      onClick: handleNavLinkClick,
+    },
+    {
+      to: "/top-rated",
+      text: "Top Rated",
+      onClick: handleNavLinkClick,
+    },
+    {
+      to: "/upcoming",
+      text: "Upcoming",
+      onClick: handleNavLinkClick,
+    },
+  ];
+
   return (
     <>
       <StyledNavigation>
-        <StyledNavConainer>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <NavigationLink onClick={handleNavLinkClick} to="/" text="Home" />
+        <StyledMobileHomLink onClick={() => handleNavLinkClick()} to={"/"}>
+          Home
+        </StyledMobileHomLink>
+
+        <StyledNavConainer menuOpen={toggleMobileMenu}>
+          <StyledNavMenu>
+            {navLinks.map((link) => (
+              <NavigationLink
+                key={link.to}
+                to={link.to}
+                text={link.text}
+                onClick={link.onClick}
+              />
+            ))}
+
+            {genreOptions && (
+              <Select
+                value={selectedGenre}
+                styles={reactSelectStyles}
+                /* menuIsOpen={true} */
+                placeholder="Genre"
+                options={genreOptions}
+                onChange={handleGenreChange}
+                isClearable={true}
+                isSearchable={false}
+              />
+            )}
+          </StyledNavMenu>
+        </StyledNavConainer>
+        <StyledInput
+          placeholder="Find a movie..."
+          value={searchInput}
+          onKeyUp={(e) => handleKeyPress(e)}
+          onChange={(e) => handleInputSearch(e.currentTarget.value)}
+        />
+        <StyledMobileMenuIcon
+          onClick={() => setToggleMobileMenu(!toggleMobileMenu)}
+          src={
+            toggleMobileMenu
+              ? "/mobile-menu-close.png"
+              : "/mobile-menu-open.png"
+          }
+        />
+      </StyledNavigation>
+    </>
+  );
+};
+
+export default Navigation;
+
+{
+  /* <StyledInput
+          mobileMenu={true}
+          placeholder="Find a movie..."
+          value={searchInput}
+          onKeyUp={(e) => handleKeyPress(e)}
+          onChange={(e) => handleInputSearch(e.currentTarget.value)}
+        /> */
+}
+
+/*
+<StyledMobileMenuIcon src="/mobile-menu-open.png" />
+<StyledMobileMenuIcon src="/mobile-menu-close.png" />
+*/
+
+{
+  /* <NavigationLink onClick={handleNavLinkClick} to="/" text="Home" />
             <NavigationLink
               to="/trending"
               text="Trending"
@@ -78,29 +167,5 @@ const Navigation: React.FC<Props> = ({}) => {
               to="/upcoming"
               text="Upcoming"
               onClick={handleNavLinkClick}
-            />
-            {genreOptions && (
-              <Select
-                value={selectedGenre}
-                styles={reactSelectStyles}
-                placeholder="Genre"
-                options={genreOptions}
-                onChange={handleGenreChange}
-                isClearable={true}
-                isSearchable={false}
-              />
-            )}
-          </div>
-          <StyledInput
-            placeholder="Find a movie..."
-            value={searchInput}
-            onKeyUp={(e) => handleKeyPress(e)}
-            onChange={(e) => handleInputSearch(e.currentTarget.value)}
-          />
-        </StyledNavConainer>
-      </StyledNavigation>
-    </>
-  );
-};
-
-export default Navigation;
+            /> */
+}

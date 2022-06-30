@@ -21,7 +21,7 @@ const Search: React.FC<Props> = ({}) => {
 
   return (
     <>
-      <Section>
+      <Section top={true}>
         <Container med={true}>
           <h2>Showing results for "{searchInput}"</h2>
           <PaginatedMovies

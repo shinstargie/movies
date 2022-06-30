@@ -90,6 +90,12 @@ a:hover {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .swiper-pagination {
+    display: none !important;
+  }
+}
+
 .swiper-btn-left {
   left: 0px;
   right: auto;
@@ -123,6 +129,7 @@ a:hover {
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.85);
+  border: none !important;
 }
 
 @media screen and (max-width: 1440px) {

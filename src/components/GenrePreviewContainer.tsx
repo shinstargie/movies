@@ -13,16 +13,6 @@ interface Props {
   autoplay?: boolean;
 }
 
-const textLink = {
-  display: "inline-block",
-  marginBottom: "1px",
-  marginLeft: "10px",
-  color: "yellow",
-  "&:hover": {
-    color: "#b20600 !important",
-  },
-};
-
 const GenrePreviewContainer: React.FC<Props> = ({
   data,
   title,
@@ -34,9 +24,7 @@ const GenrePreviewContainer: React.FC<Props> = ({
       <Container>
         <StyledGenreHeaderWrap>
           <StyledH2>{title}</StyledH2>
-          <StyledTextLink style={textLink} to={`/genre/${id}`}>
-            See more {">"}
-          </StyledTextLink>
+          <StyledTextLink to={`/genre/${id}`}>See more {">"}</StyledTextLink>
         </StyledGenreHeaderWrap>
         <SwipeSlider data={data} autoplay={autoplay} />
       </Container>

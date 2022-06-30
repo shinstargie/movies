@@ -13,6 +13,11 @@ const StyledNavigationLink = styled.div`
     font-size: 15px;
     margin-right: 15px;
   }
+
+  @media ${device.tablet} {
+    font-size: 20px;
+    padding: 20px;
+  }
 `;
 
 export default StyledNavigationLink;
