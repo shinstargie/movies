@@ -16,6 +16,8 @@ const StyledNavMenu = styled.div<{ menuOpen: boolean }>`
     left: 0;
     right: 0;
     background-color: black;
+    height: 100vh;
+    overflow: auto;
   }
 `;
 

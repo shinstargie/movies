@@ -19,7 +19,7 @@ const StyledHeroSection = styled.div<{ bgImg: string | undefined }>`
     url(${(props) => BACKDROP_PATH + props.bgImg});
 
   @media ${device.laptop} {
-    height: 700px;
+    height: 600px;
     padding: 50px 15px;
   }
 `;
