@@ -10,13 +10,14 @@ App is live at: https://movietrailerz.netlify.app/
 
 ## Screenshots!
 Home
-[Uploading Homepage.png…]()
+![Homepage](https://user-images.githubusercontent.com/42705232/176843319-49f9ec78-76fc-42ee-a45d-a22c88d9f639.png)
+
 Trending
 ![screencapture-localhost-3000-trending-2022-07-01-03_07_10](https://user-images.githubusercontent.com/42705232/176842769-39f56279-873c-4009-84af-728bac81467b.png)
 Genre
 ![screencapture-movietrailerz-netlify-app-genre-9648-2022-07-01-03_08_55](https://user-images.githubusercontent.com/42705232/176843067-75724e66-2b25-4695-83a3-0c50c81c8502.png)
 Search
-![Uploading screencapture-movietrailerz-netlify-app-search-2022-07-01-03_09_42.png…]()
+![screencapture-movietrailerz-netlify-app-search-2022-07-01-03_09_42](https://user-images.githubusercontent.com/42705232/176843433-aa693552-533f-46ac-a458-d6482c6eb848.png)
 
 ## Technologies
 
