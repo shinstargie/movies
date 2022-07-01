@@ -51,11 +51,13 @@ const Navigation: React.FC<Props> = ({}) => {
   ) {
     setSelectedGenre(option);
     if (!option) {
-      if (tabletBreakpoint) setToggleMobileMenu(!toggleMobileMenu);
+      // if (tabletBreakpoint) setToggleMobileMenu(!toggleMobileMenu);
+      if (tabletBreakpoint) onMobileMenuToggle();
       return history.push(`/`);
     }
     history.push(`/genre/${Number(option.value)}`);
-    if (tabletBreakpoint) setToggleMobileMenu(!toggleMobileMenu);
+    // if (tabletBreakpoint) setToggleMobileMenu(!toggleMobileMenu);
+    if (tabletBreakpoint) onMobileMenuToggle();
   }
 
   function handleNavLinkClick() {
@@ -65,7 +67,8 @@ const Navigation: React.FC<Props> = ({}) => {
 
   function handleSingleNavLinkClick() {
     handleNavLinkClick();
-    if (tabletBreakpoint) setToggleMobileMenu(!toggleMobileMenu);
+    // if (tabletBreakpoint) setToggleMobileMenu(!toggleMobileMenu);
+    onMobileMenuToggle();
   }
 
   const navLinks = [
@@ -90,6 +93,20 @@ const Navigation: React.FC<Props> = ({}) => {
       onClick: handleSingleNavLinkClick,
     },
   ];
+
+  function onMobileMenuToggle() {
+    setToggleMobileMenu(!toggleMobileMenu);
+
+    if (toggleMobileMenu) {
+      document.body.style.overflow = "visible";
+      return;
+    }
+
+    if (!toggleMobileMenu) {
+      document.body.style.overflow = "hidden";
+      return;
+    }
+  }
 
   return (
     <>
@@ -132,7 +149,8 @@ const Navigation: React.FC<Props> = ({}) => {
         </StyledNavConainer>
 
         <StyledMobileMenuIcon
-          onClick={() => setToggleMobileMenu(!toggleMobileMenu)}
+          /* onClick={() => setToggleMobileMenu(!toggleMobileMenu)} */
+          onClick={() => onMobileMenuToggle()}
           src={
             toggleMobileMenu
               ? "/mobile-menu-close.png"

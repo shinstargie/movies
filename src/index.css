@@ -90,6 +90,12 @@ a:hover {
   }
 }
 
+@media screen and (max-width: 425px) {
+  .swiper-slide img {
+    height: 245px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .swiper-pagination {
     display: none !important;

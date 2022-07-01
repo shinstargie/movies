@@ -4,7 +4,6 @@ import { device } from "./_breakpoints";
 const StyledButton = styled.button<{ primary?: boolean; noSpace?: boolean }>`
   padding: 15px 20px;
   font-size: 20px;
-  /* margin-right: 25px; */
   margin-right: ${({ noSpace }) => (noSpace ? "0" : "25px")};
   cursor: pointer;
   background-color: ${({ theme, primary }) =>
@@ -27,6 +26,7 @@ const StyledButton = styled.button<{ primary?: boolean; noSpace?: boolean }>`
   @media ${device.mobileM} {
     font-size: 12px;
     padding: 12px 16px;
+    margin-bottom: 10px;
   }
 `;
 
