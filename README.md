@@ -2,7 +2,7 @@
 
 Movietrailerz
 
-# About
+## About
 
 Movietrailerz is an app that uses [The Movie Database](https://www.themoviedb.org/) to showcase movies and trailers. Here's a [link to their API docs(https://developers.themoviedb.org/3/getting-started/introduction).
 
