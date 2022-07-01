@@ -29,12 +29,12 @@ This is a react typescript project made with styled components. Additional key l
 
 - [react-select](https://react-select.com/home)
 - [react-hot-toast](https://react-hot-toast.com/)
-- [axios)](https://axios-http.com/docs/intro)
+- [axios](https://axios-http.com/docs/intro)
 - [react-modal](https://www.npmjs.com/package/react-modal)
 - [react-icons](https://react-icons.github.io/react-icons/)
 - [react-paginate](https://www.npmjs.com/package/react-paginate)
 - [react-youtube](https://www.npmjs.com/package/react-youtube)
-- [swiper)](https://www.npmjs.com/package/swiper)
+- [swiper](https://www.npmjs.com/package/swiper)
 
 ## Setup
 
