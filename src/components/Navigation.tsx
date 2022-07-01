@@ -95,12 +95,12 @@ const Navigation: React.FC<Props> = ({}) => {
   function onMobileMenuToggle() {
     setToggleMobileMenu(!toggleMobileMenu);
 
-    if (toggleMobileMenu) {
+    if (toggleMobileMenu && tabletBreakpoint) {
       document.body.style.overflow = "visible";
       return;
     }
 
-    if (!toggleMobileMenu) {
+    if (!toggleMobileMenu && tabletBreakpoint) {
       document.body.style.overflow = "hidden";
       return;
     }

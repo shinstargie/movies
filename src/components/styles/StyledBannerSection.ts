@@ -22,7 +22,7 @@ const StyledBannerSection = styled.div<{ bgImg: string | undefined }>`
   }
 
   @media ${device.laptop} {
-    height: 200px;
+    height: 150px;
   }
 `;
 
