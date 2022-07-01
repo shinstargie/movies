@@ -8,7 +8,7 @@ Browse through movies that are trending this week, top rated of all time, upcomi
 
 App is live at: https://movietrailerz.netlify.app/
 
-## Screenshots!
+## Screenshots
 Home
 ![Homepage](https://user-images.githubusercontent.com/42705232/176843319-49f9ec78-76fc-42ee-a45d-a22c88d9f639.png)
 
