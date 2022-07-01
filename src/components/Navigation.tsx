@@ -5,13 +5,11 @@ import { SearchContext } from "../context/SearchContext";
 import { useHistory } from "react-router-dom";
 import StyledNavConainer from "./styles/StyledNavContainer.styled";
 import StyledInput from "./styles/StyledInput.styled";
-import "react-dropdown/style.css";
 import { GenreContext } from "./../context/GenreContext";
 import Select, { ActionMeta, SingleValue } from "react-select";
 import { reactSelectStyles } from "../components/styles/customStyles";
 import StyledNavMenu from "./styles/StyledNavMenu.styled";
 import StyledMobileMenuIcon from "./styles/StyledMobileMenuIcon.styled";
-import StyledTextLink from "./styles/StyledTextLink.styled";
 import StyledMobileHomLink from "./styles/StyledMobileHomLink.styled";
 
 interface Props {}

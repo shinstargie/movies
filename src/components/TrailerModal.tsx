@@ -31,7 +31,7 @@ const TrailerModal: React.FC<Props> = ({
         <StyledTrailerHeader>
           <ModalTitle text={movie.title} />
           <StyledButton primary noSpace onClick={closeModal}>
-            Close Trailer
+            Close
           </StyledButton>
         </StyledTrailerHeader>
 
