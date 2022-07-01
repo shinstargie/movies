@@ -39,7 +39,7 @@ This is a react typescript project made with styled components. Additional key l
 ## Setup
 
 1. Get an API key: [The Movie DB | API Introduction](https://developers.themoviedb.org/3/getting-started/introduction)
-2. Clone the repo to your local machine
+2. Clone this repo to your local machine
 3. Create a `.env` file in the root of the project directory
 4. In the `.env` file, add the following environment variable for the API key: `REACT_APP_API_KEY=YourAPIKey`
 5. Go to terminal and run: `npm start`
