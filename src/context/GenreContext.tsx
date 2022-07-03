@@ -13,8 +13,6 @@ interface Props {
   children: JSX.Element[] | JSX.Element;
 }
 
-// Dispatch<any>;
-
 export const GenreContextProvider: React.FC<Props> = ({ children }) => {
   const [genres, setGenres] = useState<Genre[] | null>(null);
   const [genresLoading, setGenresLoading] = useState<boolean>(true);
