@@ -6,7 +6,7 @@ Movietrailerz
 
 Movietrailerz is an app that uses [The Movie Database](https://www.themoviedb.org/) to showcase movies and trailers. Here's a [link to their API docs](https://developers.themoviedb.org/3/getting-started/introduction).
 
-Browse through movies that are trending this week, top rated of all time, upcoming and different genres. There is also a global search feature to serach through all the movies the api has to offer.
+Browse through movies that are trending this week, top rated of all time, upcoming and different genres. Use the global search feature to search through all the movies the api has to offer.
 
 ## Demo link
 

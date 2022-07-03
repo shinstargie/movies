@@ -15,6 +15,7 @@ const CustomModal: React.FC<Props> = ({ toggleModal, closeModal, content }) => {
         style={modalStyles}
         isOpen={toggleModal}
         onRequestClose={closeModal}
+        onAfterOpen={() => null}
       >
         {content}
       </Modal>
