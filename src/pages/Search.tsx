@@ -9,13 +9,8 @@ import StyledH2Title from "./../components/styles/StyledH2.styled";
 interface Props {}
 
 const Search: React.FC<Props> = ({}) => {
-  const {
-    searchInput,
-    searchData,
-    searchLoading,
-    searchPageCount,
-    setCurrentSearchPage,
-  } = useContext(SearchContext);
+  const { searchInput, searchData, searchPageCount, setCurrentSearchPage } =
+    useContext(SearchContext);
 
   function onPageChange(event: { selected: number }) {
     setCurrentSearchPage(event.selected + 1);

@@ -66,7 +66,8 @@ function cleanResults(data: Movies) {
       !movie.title.toLocaleLowerCase().includes("trip 6") &&
       !movie.title.toLocaleLowerCase().includes("fire island") &&
       !movie.title.toLocaleLowerCase().includes("xxx") &&
-      !movie.title.toLocaleLowerCase().includes("seducing")
+      !movie.title.toLocaleLowerCase().includes("seducing") &&
+      !movie.title.toLocaleLowerCase().includes("lynch")
   );
 }
 

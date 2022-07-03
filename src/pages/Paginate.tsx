@@ -100,7 +100,7 @@ const Paginate: React.FC<Props> = ({}) => {
             <TrailerModal
               movie={currentMovie}
               loading={loading}
-              trailerGenres={currentGenres}
+              /*   trailerGenres={currentGenres} */
               closeModal={closeModal}
             />
           )}
