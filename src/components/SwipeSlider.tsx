@@ -31,10 +31,11 @@ const SwipeSlider: React.FC<Props> = ({ data, autoplay }) => {
     movie.trailerKey = trailer.key;
     setCurrentMovie(movie);
     setToggleModal(!toggleModal);
+    document.body.style.overflow = "hidden";
   }
 
   function closeModal() {
-    document.body.style.overflow = "auto";
+    document.body.style.overflow = "visible";
     setToggleModal(!toggleModal);
   }
 

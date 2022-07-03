@@ -27,10 +27,11 @@ const Hero: React.FC<Props> = ({ data, loading }) => {
     if (!trailer) return toast.error("Trailer unavailable");
     movie.trailerKey = trailer.key;
     setToggleModal(!toggleModal);
+    document.body.style.overflow = "hidden";
   }
 
   function closeModal() {
-    document.body.style.overflow = "auto";
+    document.body.style.overflow = "visible";
     setToggleModal(!toggleModal);
   }
 

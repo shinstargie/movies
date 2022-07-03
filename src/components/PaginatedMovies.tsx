@@ -45,6 +45,7 @@ const PaginatedMovies: React.FC<Props> = ({
     movie.trailerKey = trailer.key;
     setCurrentMovie(movie);
     setToggleModal(!toggleModal);
+    document.body.style.overflow = "hidden";
   }
 
   function closeModal() {
