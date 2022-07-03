@@ -1,15 +1,15 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import ReactPaginate from "react-paginate";
 import { fetchTrailer, IMAGE_PATH } from "../api";
 import MovieImage from "./MovieImage";
 import MovieContainer from "./styles/MovieContainer.styled";
 import StyledMovieCardLoader from "./styles/StyledMovieCardLoader.styled";
-import { Genre, Movie } from "./_types";
-import { GenreContext } from "./../context/GenreContext";
+import { Movie } from "./_types";
 import CustomModal from "./CustomModal";
 import StyledMovieRating from "./styles/StyledMovieRating.styled";
 import StyledNoResults from "./styles/StyledNoResults.styled";
+import TrailerModal from "./TrailerModal";
 
 interface Props {
   data: Movie[] | null;
@@ -36,36 +36,15 @@ const PaginatedMovies: React.FC<Props> = ({
   const pageLimitSetByApi = 500;
   const [toggleModal, setToggleModal] = useState<boolean>(false);
   const [currentMovie, setCurrentMovie] = useState<Movie | null>(null);
-  const [currentGenres, setCurrentGenres] = useState<Genre[] | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const { genres } = useContext(GenreContext);
 
   useEffect(() => window.scrollTo(0, 0), [data]);
 
-  function matchGenres(movie: Movie) {
-    if (genres) {
-      const matchedGenres = genres.filter(
-        (obj) => movie.genre_ids.indexOf(obj.id) !== -1
-      );
-      setCurrentGenres(matchedGenres);
-    }
-  }
-
-  async function openModal(movie: Movie) {
-    setLoading(true);
+  async function getTrailer(movie: Movie) {
     const trailer = await fetchTrailer(movie.id);
     if (!trailer) return toast.error("Trailer unavailable");
-
     movie.trailerKey = trailer.key;
-    matchGenres(movie);
     setCurrentMovie(movie);
     setToggleModal(!toggleModal);
-
-    document.body.style.overflow = "hidden";
-
-    const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
-      setLoading(false);
-    }, 1200);
   }
 
   function closeModal() {
@@ -81,12 +60,9 @@ const PaginatedMovies: React.FC<Props> = ({
   return (
     <>
       <CustomModal
-        loading={loading}
         toggleModal={toggleModal}
-        /* closeModal={() => setToggleModal(!toggleModal)} */
         closeModal={closeModal}
-        movie={currentMovie}
-        matchedGenres={currentGenres}
+        content={<TrailerModal movie={currentMovie} closeModal={closeModal} />}
       />
 
       {data?.length === 0 && (
@@ -102,7 +78,7 @@ const PaginatedMovies: React.FC<Props> = ({
             <MovieImage
               src={IMAGE_PATH + `${movie.poster_path}`}
               alt={movie.title}
-              onClick={() => openModal(movie)}
+              onClick={() => getTrailer(movie)}
             />
             {movie.vote_average !== 0 && (
               <StyledMovieRating>
@@ -137,3 +113,34 @@ const PaginatedMovies: React.FC<Props> = ({
 };
 
 export default PaginatedMovies;
+
+/*  setLoading(true);
+    const trailer = await fetchTrailer(movie.id);
+    if (!trailer) return toast.error("Trailer unavailable");
+
+    movie.trailerKey = trailer.key;
+    matchGenres(movie);
+    setCurrentMovie(movie);
+    setToggleModal(!toggleModal);
+
+    document.body.style.overflow = "hidden";
+
+    const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
+      setLoading(false);
+    }, 1200); */
+
+{
+  /* <TrailerModal
+          movie={currentMovie}
+          loading={loading}
+          closeModal={closeModal}
+        />
+      </CustomModal> */
+}
+
+/* loading={loading} */
+/* data={currentMovie} */
+/* matchedGenres={currentGenres} */
+/* closeModal={() => setToggleModal(!toggleModal)} */
+/* content={<TrailerModal movie={}/>} */
+/* movie={currentMovie} */

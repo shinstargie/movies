@@ -2,7 +2,7 @@ import React from "react";
 import StyledDescription from "./styles/StyledDescription.styled";
 
 interface Props {
-  text: string;
+  text: string | undefined;
 }
 
 const TrailerDescription: React.FC<Props> = ({ text }) => {

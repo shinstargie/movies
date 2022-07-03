@@ -1,24 +1,14 @@
-import React, { useContext } from "react";
-import { Movie, Genre } from "./_types";
+import React from "react";
 import Modal from "react-modal";
 import { modalStyles } from "./styles/customStyles";
-import TrailerModal from "./TrailerModal";
 
 interface Props {
-  loading: boolean;
   toggleModal: boolean;
   closeModal: () => void;
-  movie: Movie | null | undefined;
-  matchedGenres: Genre[] | null;
+  content: JSX.Element;
 }
 
-const CustomModal: React.FC<Props> = ({
-  loading,
-  toggleModal,
-  closeModal,
-  movie,
-  matchedGenres,
-}) => {
+const CustomModal: React.FC<Props> = ({ toggleModal, closeModal, content }) => {
   return (
     <>
       <Modal
@@ -27,19 +17,37 @@ const CustomModal: React.FC<Props> = ({
         onRequestClose={closeModal}
         onAfterOpen={() => null}
       >
-        {movie && (
-          <>
-            <TrailerModal
-              movie={movie}
-              loading={loading}
-              trailerGenres={matchedGenres}
-              closeModal={closeModal}
-            />
-          </>
-        )}
+        {content}
       </Modal>
     </>
   );
 };
 
 export default CustomModal;
+
+/* 
+
+loading?: boolean;  
+  movie?: Movie | null | undefined;
+  matchedGenres?: Genre[] | null;
+  data?: Movie | null | undefined;  
+  children?: JSX.Element;
+
+ loading,
+  movie,
+  data,
+  matchedGenres,
+  children,
+
+  {movie && (
+          <>
+            <TrailerModal
+              movie={movie}
+              loading={loading}
+               trailerGenres={matchedGenres}
+              closeModal={closeModal}
+            />
+          </>
+        )}
+
+*/
