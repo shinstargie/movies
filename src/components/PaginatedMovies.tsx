@@ -113,34 +113,3 @@ const PaginatedMovies: React.FC<Props> = ({
 };
 
 export default PaginatedMovies;
-
-/*  setLoading(true);
-    const trailer = await fetchTrailer(movie.id);
-    if (!trailer) return toast.error("Trailer unavailable");
-
-    movie.trailerKey = trailer.key;
-    matchGenres(movie);
-    setCurrentMovie(movie);
-    setToggleModal(!toggleModal);
-
-    document.body.style.overflow = "hidden";
-
-    const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
-      setLoading(false);
-    }, 1200); */
-
-{
-  /* <TrailerModal
-          movie={currentMovie}
-          loading={loading}
-          closeModal={closeModal}
-        />
-      </CustomModal> */
-}
-
-/* loading={loading} */
-/* data={currentMovie} */
-/* matchedGenres={currentGenres} */
-/* closeModal={() => setToggleModal(!toggleModal)} */
-/* content={<TrailerModal movie={}/>} */
-/* movie={currentMovie} */

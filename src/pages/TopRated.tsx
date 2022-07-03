@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { movieOptions, fetchMovies } from "../api";
-import Container from "../components/Container";
 import PaginatedMovies from "../components/PaginatedMovies";
 import Section from "../components/Section";
 import { Movie } from "../components/_types";

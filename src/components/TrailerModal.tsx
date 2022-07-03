@@ -76,38 +76,3 @@ const TrailerModal: React.FC<Props> = ({ movie, closeModal }) => {
 };
 
 export default TrailerModal;
-
-/* if (movie) getTrailer(movie); */
-
-/* async function getTrailer(movie: Movie) {
-    setLoading(true);
-    // const trailer = await fetchTrailer(movie.id);
-    // if (!trailer) return toast.error("Trailer unavailable");
-    // movie.trailerKey = trailer.key; 
-    // setCurrentMovie(movie);
-    document.body.style.overflow = "hidden";
-    setShowTrailer(true);
-
-    const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
-      setLoading(false);
-    }, 1200);
-  } */
-
-/* 
-
-trailerGenres: Genre[] | null;
-
-trailerGenres,
-
-
-  function matchGenres(movie: Movie) {
-    if (genres) {
-      const matchedGenres = genres.filter(
-        (obj) => movie.genre_ids.indexOf(obj.id) !== -1
-      );
-      setMatchedGenres(matchedGenres);
-    }
-  }
-
-
-*/
