@@ -49,12 +49,10 @@ const Navigation: React.FC<Props> = ({}) => {
   ) {
     setSelectedGenre(option);
     if (!option) {
-      // if (tabletBreakpoint) setToggleMobileMenu(!toggleMobileMenu);
       if (tabletBreakpoint) onMobileMenuToggle();
       return history.push(`/`);
     }
     history.push(`/genre/${Number(option.value)}`);
-    // if (tabletBreakpoint) setToggleMobileMenu(!toggleMobileMenu);
     if (tabletBreakpoint) onMobileMenuToggle();
   }
 
@@ -65,7 +63,6 @@ const Navigation: React.FC<Props> = ({}) => {
 
   function handleSingleNavLinkClick() {
     handleNavLinkClick();
-    // if (tabletBreakpoint) setToggleMobileMenu(!toggleMobileMenu);
     onMobileMenuToggle();
   }
 
@@ -128,7 +125,6 @@ const Navigation: React.FC<Props> = ({}) => {
               <Select
                 value={selectedGenre}
                 styles={reactSelectStyles}
-                /* menuIsOpen={true} */
                 placeholder="Genre"
                 options={genreOptions}
                 onChange={handleGenreChange}
@@ -147,7 +143,6 @@ const Navigation: React.FC<Props> = ({}) => {
         </StyledNavConainer>
 
         <StyledMobileMenuIcon
-          /* onClick={() => setToggleMobileMenu(!toggleMobileMenu)} */
           onClick={() => onMobileMenuToggle()}
           src={
             toggleMobileMenu
@@ -161,37 +156,3 @@ const Navigation: React.FC<Props> = ({}) => {
 };
 
 export default Navigation;
-
-{
-  /* <StyledInput
-          mobileMenu={true}
-          placeholder="Find a movie..."
-          value={searchInput}
-          onKeyUp={(e) => handleKeyPress(e)}
-          onChange={(e) => handleInputSearch(e.currentTarget.value)}
-        /> */
-}
-
-/*
-<StyledMobileMenuIcon src="/mobile-menu-open.png" />
-<StyledMobileMenuIcon src="/mobile-menu-close.png" />
-*/
-
-{
-  /* <NavigationLink onClick={handleNavLinkClick} to="/" text="Home" />
-            <NavigationLink
-              to="/trending"
-              text="Trending"
-              onClick={handleNavLinkClick}
-            />
-            <NavigationLink
-              to="/top-rated"
-              text="Top Rated"
-              onClick={handleNavLinkClick}
-            />
-            <NavigationLink
-              to="/upcoming"
-              text="Upcoming"
-              onClick={handleNavLinkClick}
-            /> */
-}

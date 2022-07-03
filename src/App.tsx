@@ -10,7 +10,6 @@ import Search from "./pages/Search";
 import { SearchContextProvider } from "./context/SearchContext";
 import TopRated from "./pages/TopRated";
 import Upcoming from "./pages/Upcoming";
-import "./App.css";
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {

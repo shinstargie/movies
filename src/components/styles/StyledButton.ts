@@ -31,8 +31,3 @@ const StyledButton = styled.button<{ primary?: boolean; noSpace?: boolean }>`
 `;
 
 export default StyledButton;
-
-/* &:hover {
-    background-color: ${({ theme, primary }) =>
-    primary ? theme.colors.black : theme.colors.red};
-  } */

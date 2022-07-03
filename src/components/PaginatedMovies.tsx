@@ -99,8 +99,6 @@ const PaginatedMovies: React.FC<Props> = ({
           initialPage={0}
           onPageChange={onPageChange}
           pageRangeDisplayed={5}
-          /* pageCount={discoverRoutePageCountLimit} */
-          /* pageCount={totalpages ? totalpages : pageLimitSetByApi} */
           pageCount={getPageCount()}
           renderOnZeroPageCount={() => null}
           containerClassName="pagination"

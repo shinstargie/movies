@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { device } from "./_breakpoints";
 
 const StyledInput = styled.input<{ mobileMenu?: boolean }>`
-  /* display: ${({ mobileMenu }) => (!mobileMenu ? "block" : "none")}; */
   background-color: black;
   color: yellow;
   caret-color: white;
@@ -24,7 +23,6 @@ const StyledInput = styled.input<{ mobileMenu?: boolean }>`
   }
 
   @media ${device.tablet} {
-    /* display: ${({ mobileMenu }) => (mobileMenu ? "block" : "none")}; */
     width: 100%;
     flex-shrink: 1;
     margin-right: 25px;

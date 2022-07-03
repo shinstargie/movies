@@ -66,5 +66,3 @@ const Hero: React.FC<Props> = ({ data, loading }) => {
 };
 
 export default Hero;
-
-/* closeModal={() => setToggleModal(!toggleModal)} */

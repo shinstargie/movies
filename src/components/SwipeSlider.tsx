@@ -110,5 +110,3 @@ const SwiperButtonNext = ({ children }: any) => {
     </button>
   );
 };
-
-/* slidesPerView={6} */

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { device } from "./_breakpoints";
 
 const ModalMetaInfoWrap = styled.span`
   display: inline-block;

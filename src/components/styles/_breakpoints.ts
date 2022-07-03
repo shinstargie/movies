@@ -18,7 +18,6 @@ export const device = {
   laptop: `(max-width: ${size.laptop})`,
   laptopL: `(max-width: ${size.laptopL})`,
   desktop: `(max-width: ${size.desktop})`,
-  /* desktopL: `(max-width: ${size.desktop})`, */
 };
 
 /* swiper js slider breakpoints */
@@ -30,10 +29,6 @@ export const swiperBreakpoints = {
     slidesPerView: 2,
     spaceBetween: 15,
   },
-  /*  375: {
-    width: 375,
-    slidesPerView: 2,
-  }, */
   425: {
     width: 425,
     slidesPerView: 2,
@@ -50,8 +45,16 @@ export const swiperBreakpoints = {
     width: 1440,
     slidesPerView: 5,
   },
-  /*  2560: {
+};
+
+/* desktopL: `(max-width: ${size.desktop})`, */
+
+/*  375: {
+    width: 375,
+    slidesPerView: 2,
+  }, */
+
+/*  2560: {
     width: 2560,
     slidesPerView: 5,
   }, */
-};

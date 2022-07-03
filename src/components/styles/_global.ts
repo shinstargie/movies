@@ -7,6 +7,14 @@ const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
 }
 
+a:hover {
+  color: yellow;
+}
+
+.active-nav-link {
+  color: yellow;
+}
+
 body {
   margin: 0;
   background-color: black;

@@ -30,10 +30,3 @@ const StyledNavigation = styled.nav`
 `;
 
 export default StyledNavigation;
-
-/* background-image: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 1)
-  ); */

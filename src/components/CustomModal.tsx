@@ -24,30 +24,3 @@ const CustomModal: React.FC<Props> = ({ toggleModal, closeModal, content }) => {
 };
 
 export default CustomModal;
-
-/* 
-
-loading?: boolean;  
-  movie?: Movie | null | undefined;
-  matchedGenres?: Genre[] | null;
-  data?: Movie | null | undefined;  
-  children?: JSX.Element;
-
- loading,
-  movie,
-  data,
-  matchedGenres,
-  children,
-
-  {movie && (
-          <>
-            <TrailerModal
-              movie={movie}
-              loading={loading}
-               trailerGenres={matchedGenres}
-              closeModal={closeModal}
-            />
-          </>
-        )}
-
-*/

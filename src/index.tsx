@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { GenreContextProvider } from "./context/GenreContext";
 import "./index.css";
+import { GenreContextProvider } from "./context/GenreContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

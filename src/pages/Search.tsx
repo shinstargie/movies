@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import Container from "../components/Container";
 import Section from "../components/Section";
-import StyledNoResults from "../components/styles/StyledNoResults.styled";
 import { SearchContext } from "../context/SearchContext";
 import PaginatedMovies from "./../components/PaginatedMovies";
 import StyledH2Title from "./../components/styles/StyledH2.styled";

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { BACKDROP_PATH } from "../../api";
 import { device } from "./_breakpoints";
 
 const BG_PATH = "https://image.tmdb.org/t/p/w1280";
@@ -27,12 +26,3 @@ const StyledBannerSection = styled.div<{ bgImg: string | undefined }>`
 `;
 
 export default StyledBannerSection;
-
-// rgba(0, 0, 0, 0.4),
-
-/* background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0.85)
-    ),
-    url(${(props) => BACKDROP_PATH + props.bgImg}); */
