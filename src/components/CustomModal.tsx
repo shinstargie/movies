@@ -25,6 +25,7 @@ const CustomModal: React.FC<Props> = ({
         style={modalStyles}
         isOpen={toggleModal}
         onRequestClose={closeModal}
+        onAfterOpen={() => null}
       >
         {movie && (
           <>

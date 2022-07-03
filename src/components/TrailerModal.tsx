@@ -26,7 +26,7 @@ const TrailerModal: React.FC<Props> = ({
   closeModal,
 }) => {
   return (
-    <Section>
+    <>
       <Container>
         <StyledTrailerHeader>
           <ModalTitle text={movie.title} />
@@ -57,7 +57,7 @@ const TrailerModal: React.FC<Props> = ({
 
         <TrailerDescription text={movie.overview} />
       </Container>
-    </Section>
+    </>
   );
 };
 
