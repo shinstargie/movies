@@ -34,7 +34,7 @@ const TopRated: React.FC<Props> = ({}) => {
         currentMovies={currentMovies}
       />
 
-      <Section top={currentPage !== 1 && true}>
+      <Section top={currentPage !== 1}>
         <PaginatedMovies data={currentMovies} onPageChange={onPageChange} />
       </Section>
     </>

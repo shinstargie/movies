@@ -38,7 +38,7 @@ const Trending: React.FC = () => {
         currentMovies={currentMovies}
       />
 
-      <Section top={currentPage !== 1 && true}>
+      <Section top={currentPage !== 1}>
         <Container>
           <PaginatedMovies
             data={currentMovies}

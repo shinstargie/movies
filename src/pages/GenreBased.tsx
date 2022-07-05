@@ -61,7 +61,7 @@ const GenreBased: React.FC = ({}) => {
         />
       )}
 
-      <Section top={currentPage !== 1 && true}>
+      <Section top={currentPage !== 1}>
         <Container>
           <PaginatedMovies
             data={currentMovies}
