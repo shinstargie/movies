@@ -11,7 +11,7 @@ const StyledInput = styled.input<{ mobileMenu?: boolean }>`
   height: 45px;
   width: 250px;
   font-size: 18px;
-  box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.5);
 
   &:focus-visible {
     outline: none !important;

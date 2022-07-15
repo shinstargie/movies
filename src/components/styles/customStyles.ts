@@ -39,7 +39,7 @@ export const reactSelectStyles = {
     borderRadius: "0px",
     backgroundColor: "black",
     border: "2px solid rgba(255,255,255,0.50)",
-    boxShadow: "0px 5px 25px rgba(0, 0, 0, 0.75)",
+    boxShadow: "0px 5px 25px rgba(0, 0, 0, 0.50)",
     "&:hover": {
       border: "2px solid rgba(255,255,255,1)",
     },
@@ -71,7 +71,7 @@ export const reactSelectStyles = {
     padding: "15px",
     backgroundColor: "black",
     border: "2px solid rgba(255,255,255,0.50)",
-    boxShadow: "0px 5px 25px rgba(0, 0, 0, 0.75)",
+    boxShadow: "0px 5px 25px rgba(0, 0, 0, 0.50)",
     transition: "border-color 150ms ease-in",
     "&:hover": {
       border: "2px solid rgba(255,255,255,1)",
