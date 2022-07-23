@@ -25,19 +25,19 @@ const Home: React.FC = () => {
 
     const timeout2: ReturnType<typeof setTimeout> = setTimeout(() => {
       getAdventure();
-    }, 1000);
+    }, 300);
 
     const timeout3: ReturnType<typeof setTimeout> = setTimeout(() => {
       getAnimation();
-    }, 2000);
+    }, 600);
 
     const timeout4: ReturnType<typeof setTimeout> = setTimeout(() => {
       getComedy();
-    }, 3000);
+    }, 900);
 
     const timeout5: ReturnType<typeof setTimeout> = setTimeout(() => {
       getCrime();
-    }, 4000);
+    }, 1200);
   }, []);
 
   function chooseFeaturedMovie(movie: Movie[]) {
