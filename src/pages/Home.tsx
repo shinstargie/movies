@@ -19,11 +19,25 @@ const Home: React.FC = () => {
   const [featured, setFeatured] = useState<Movie | null | undefined>(null);
 
   useEffect(() => {
-    getAction();
-    getAdventure();
-    getAnimation();
-    getComedy();
-    getCrime();
+    const timeout1: ReturnType<typeof setTimeout> = setTimeout(() => {
+      getAction();
+    }, 0);
+
+    const timeout2: ReturnType<typeof setTimeout> = setTimeout(() => {
+      getAdventure();
+    }, 1000);
+
+    const timeout3: ReturnType<typeof setTimeout> = setTimeout(() => {
+      getAnimation();
+    }, 2000);
+
+    const timeout4: ReturnType<typeof setTimeout> = setTimeout(() => {
+      getComedy();
+    }, 3000);
+
+    const timeout5: ReturnType<typeof setTimeout> = setTimeout(() => {
+      getCrime();
+    }, 4000);
   }, []);
 
   function chooseFeaturedMovie(movie: Movie[]) {
